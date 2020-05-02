@@ -23,7 +23,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
   <div class="container">
       <div class="navbar-translate">
-          <a class="navbar-brand" href="/">Reservation</a>
+          <a class="navbar-brand" [routerLink]="['/']">Reservation</a>
           <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
               <span class="navbar-toggler-bar"></span>
               <span class="navbar-toggler-bar"></span>
@@ -57,10 +57,10 @@
                   </a>
               </li> -->
               <li class="nav-item">
-                <a [routerLink]="['/home']" class="nav-link"><i class="nc-icon nc-layout-11"></i>メンバーログイン</a>
+                <a [routerLink]="['/login']" class="nav-link"><i class="nc-icon nc-layout-11"></i>メンバーログイン</a>
             </li>
               <li class="nav-item">
-                  <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">新規会員登録</a>
+                  <a [routerLink]="['/register']" class="btn btn-danger btn-round">新規会員登録</a>
               </li>
 
               <!-- <li class="nav-item" *ngIf="isHome()">
