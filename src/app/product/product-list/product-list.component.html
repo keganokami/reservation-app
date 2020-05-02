@@ -1,21 +1,20 @@
-<div class="container"  style="margin-top: 5rem;">
-  <div class="row ">
-    <div *ngFor="let product of products; let productId = index">
-
-      <div class="col-sm" style="margin-bottom: 1rem;">
-        <div class="card" style="width: 14rem;">
-          <img src="{{ product.coverImage }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <a
-              [routerLink]="[ product._id ]"
-              style="text-decoration: none;"
-              class="card-text">
-              <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text">{{ product.description}}</p>
-          </a>
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/cat-header.jpg');">
+      <!-- <div class="filter"></div> -->
+  </div>
+  <div class="container">
+      <div class="row" style="margin-top: 1rem;">
+          <div *ngFor="let product of products; let productId = index" class="col-sm">
+              <a [routerLink]="[ product._id ]">
+                  <div class="card">
+                      <img src="{{ product.coverImage }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          <p class="card-text">{{ product.description }}</p>
+                      </div>
+                  </div>
+              </a>
           </div>
-        </div>
       </div>
-    </div>
   </div>
 </div>
