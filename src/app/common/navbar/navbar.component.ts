@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/shared/auth.service';
 @Component({
   selector: 'app-navbar',
