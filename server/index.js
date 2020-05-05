@@ -1,14 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const config = require('./config')
 const SampleDb = require('./fake-db')
 
 const productRoutes = require('./routes/products')
+const usreRoutes = require('./routes/users')
 const path = require('path')
 
 mongoose.connect(config.DB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true,
 }).then(
   () => {
     if(process.env.NODE_ENV !== 'production') {
@@ -19,8 +22,11 @@ mongoose.connect(config.DB_URI, {
 )
 
 const app = express()
+// エンドポイントが呼ばれた時に request.body.usernameみたいな感じでpost用のbodyから値がとれるようになる
+app.use(bodyParser.json())
 
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/users', usreRoutes)
 
 if(process.env.NODE_ENV === 'production') {
   const appPath = path.join( __dirname, '..', 'dist', 'reservation-app')
