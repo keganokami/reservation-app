@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    test : Date = new Date();
-    focus;
-    focus1;
-    constructor() { }
+  errors: any[];
+  constructor(private authService: AuthService, private router: Router) { }
+
+  login(loginForm) {
+    this.authService.login(loginForm.value).subscribe(
+      (result) => {
+        console.log('Success!');
+        this.router.navigate(['/products']);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err);
+        this.errors = err.error.error;
+      }
+    );
+  }
 
     ngOnInit() {}
 }
