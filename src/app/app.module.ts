@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { NavbarComponent } from './common/navbar/navbar.component';
+import { DecimalPipe } from '@angular/common';
 
 
 @NgModule({
@@ -18,9 +19,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
       AppRoutingModule,
       AuthModule
    ],
-   providers: [
-
-   ],
+   providers: [ DecimalPipe ],
    bootstrap: [
       AppComponent
    ]

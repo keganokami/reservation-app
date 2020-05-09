@@ -1,29 +1,8 @@
-<!-- <nav class=" navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="/">
-    <h3>
-      reservation
-    </h3>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item  ">
-        <a class="nav-link" href="#">ログイン <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">新規登録</a>
-      </li>
 
-    </ul>
-  </div>
-</nav> -->
-
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg fixed-top navbar-brand" color-on-scroll="500">
   <div class="container">
-    <div class="navbar-translate">
-      <a class="navbar-brand" [routerLink]="['/']">Reservation</a>
+    <div class="navbar-default">
+      <h2><a class="navbar-brand" [routerLink]="['/']">みんなの練習場所</a></h2>
       <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
         (click)="sidebarToggle()">
@@ -36,7 +15,10 @@
       <ng-container *ngIf="auth.isAuthenticated()">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a (click)="logout()" class="nav-link"><i class="nc-icon nc-layout-11"></i>ログアウト</a>
+            <a [routerLink]="['/post']" class="btn btn-danger btn-round">投稿</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="btn btn-outline-danger btn-round"><i class="nc-icon nc-layout-11"></i>ログアウト</a>
           </li>
         </ul>
       </ng-container>
@@ -72,14 +54,6 @@
           <li class="nav-item">
             <a [routerLink]="['/register']" class="btn btn-danger btn-round">新規会員登録</a>
           </li>
-
-          <!-- <li class="nav-item" *ngIf="isHome()">
-                  <a href="https://www.creative-tim.com/product/paper-kit-2-pro-angular?ref=pk2-angular-free-local" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
-              </li>
-              <li class="nav-item" *ngIf="!isHome()">
-                  <a [routerLink]="['/home']" *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
-                  <a [routerLink]="['/home']" *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
-              </li> -->
         </ul>
       </ng-container>
     </div>

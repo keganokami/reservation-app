@@ -6,11 +6,11 @@
       <div class="row" style="margin-top: 1rem;">
           <div *ngFor="let product of products; let productId = index" class="col-sm">
               <a [routerLink]="[ product._id ]">
-                  <div class="card">
-                      <img src="{{ product.coverImage }}" class="card-img-top" alt="...">
+                  <div class="card my-card">
+                      <img src="./assets/img/uploads/{{ product.coverImage1 }}" class="card-img-top" alt="...">
                       <div class="card-body">
-                          <h5 class="card-title">{{ product.name }}</h5>
-                          <p class="card-text">{{ product.description }}</p>
+                          <h5 class="card-title">{{ product.username }}</h5>
+                          <p class="card-text">{{ product.createDate }}</p>
                       </div>
                   </div>
               </a>
@@ -18,3 +18,36 @@
       </div>
   </div>
 </div>
+<!-- <div class="section" id="carousel">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-8 mr-auto ml-auto">
+              <div class="card page-carousel">
+                  <ngb-carousel>
+                      <ng-template ngbSlide>
+                          <img src="./assets/img/uploads/f3xf2r37cb1scaxtlb26.jpg" alt="Random first slide">
+                          <div class="carousel-caption">
+                              <p>Somewhere</p>
+                          </div>
+                      </ng-template>
+                      <ng-template ngbSlide>
+                          <img src="./assets/img/uploads/n8kin1jbynt4a9b7hk9t.jpg" alt="Random second slide">
+                          <div class="carousel-caption">
+                              <p>Somewhere else</p>
+                          </div>
+                      </ng-template>
+                      <ng-template ngbSlide>
+                          <img src="./assets/img/uploads/n8kin1jbynt4a9b7hk9t.jpg" alt="Random third slide">
+                          <div class="carousel-caption">
+                              <p>Here it is</p>
+                          </div>
+                      </ng-template>
+                  </ngb-carousel>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+

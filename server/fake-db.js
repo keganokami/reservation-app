@@ -63,7 +63,7 @@ class FakeDB {
 
   async initDb() {
     await this.cleanDb()
-    this.pushProductsToDb()
+    // this.pushProductsToDb()
   }
 
   async cleanDb() {

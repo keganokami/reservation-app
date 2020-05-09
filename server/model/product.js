@@ -4,17 +4,18 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const productSchema = new Schema({
-  coverImage: String,
-  name: { type: String, require: true, max: {60 : '最大60文字までです'} },
-  price: Number,
-  description: String,
+  username: String, // localStrageから取得して送る
+  userId: String,　// localStrageから取得して送る
+  coverImage1: String,
+  coverImage2: String,
+  coverImage3: String,
   heading1: String,
-
   heading2: String,
   heading3: String,
-  headingText1: String,
-  headingText2: String,
-  headingText3: String,
+  description1: String,
+  description2: String,
+  description3: String,
+  createDate: Date, // js で作る
 });
 
 module.exports = mongoose.model('Product', productSchema)
