@@ -1,29 +1,13 @@
 <ng-container *ngIf="product">
-  <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="first-slide" src="{{ product.coverImage }}" alt="First slide">
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1>{{product.name}}</h1>
-            <p>{{product.description}}</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">$ {{ product.price }}</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div class="page-header page-header-xs" data-parallax="true"
-    [ngStyle]="{'background-image':' url(' + product.coverImage + ')'}">
-    <!-- <div class="filter"></div> -->
+  <!-- <div class="page-header page-header-xs" data-parallax="true"> -->
+    <div class="filter"></div>
     <div class="container">
       <div class="carousel-caption text-left">
-        <h2>{{product.name}}</h2>
-        <p>{{product.description}}</p>
-        <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">$ {{ product.price }}</a></p> -->
+        <h2>{{product.username}}</h2>
+        <p>{{product.createDate}}</p>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
 
   <div class="main">
@@ -48,8 +32,6 @@
               </div>
               <div class="description">
                 <h4 class="info-title">{{ product.heading1}}</h4>
-                <p class="description">{{ product.headingText1}}
-                </p>
                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
               </div>
             </div>
@@ -61,7 +43,6 @@
               </div>
               <div class="description">
                 <h4 class="info-title">{{ product.heading2}}</h4>
-                <p>{{ product.headingText2}}</p>
                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
               </div>
             </div>
@@ -73,7 +54,6 @@
               </div>
               <div class="description">
                 <h4 class="info-title">{{ product.heading3}}</h4>
-                <p>{{ product.headingText3}}</p>
                 <a href="#pkp" class="btn btn-link btn-danger">See more</a>
               </div>
             </div>
@@ -88,15 +68,12 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span>
-          </h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
+          <h2 class="featurette-heading">{{ product.heading1 }}</h2>
+          <p class="lead">{{ product.description1 }}</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" src="./assets/img/500x500.svg"
-            alt="Generic placeholder image">
+          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage1 + ')'}">
+          </div>
         </div>
       </div>
 
@@ -104,14 +81,12 @@
 
       <div class="row featurette">
         <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
+          <h2 class="featurette-heading">{{ product.heading2 }}</h2>
+          <p class="lead">{{ product.description2 }}</p>
         </div>
         <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" src="./assets/img/500x500.svg"
-            alt="Generic placeholder image">
+          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage2 + ')'}">
+          </div>
         </div>
       </div>
 
@@ -119,14 +94,12 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
+          <h2 class="featurette-heading">{{ product.heading3 }}</h2>
+          <p class="lead">{{ product.description3 }}</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" src="./assets/img/500x500.svg"
-            alt="Generic placeholder image">
+          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage3 + ')'}">
+          </div>
         </div>
       </div>
 

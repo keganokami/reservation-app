@@ -15,6 +15,7 @@
     padding: 0;
     background: $white-color;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+    margin: 0;
 
     .navbar-brand{
         font-weight: $font-weight-bold;
@@ -117,7 +118,7 @@
        @include center-item();
     }
     &.navbar-transparent{
-        padding-top: 25px;
+        padding-top: 10px;
     }
     .logo-container{
         margin-top: 5px;

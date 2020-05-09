@@ -1,0 +1,130 @@
+<div class="wrapper">
+  <div class="page-header page-header-xs" data-parallax="true"
+    style="background-image: url('./assets/img/cat-header.jpg');">
+    <!-- <div class="filter"></div> -->
+  </div>
+  <div class="section landing-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mr-auto ml-auto">
+          <h2 class="text-center">あなたの練習場所を紹介しよう！</h2>
+          <form action="/api/upload" class="contact-form" #postForm="ngForm" (ngSubmit)="post(postForm)" method="post"
+            enctype="multipart/form-data">
+            <input type="hidden" ngModel name="username" [(ngModel)]="username">
+            <input type="hidden" ngModel name="userId" [(ngModel)]="userId">
+            <input type="hidden" ngModel name="createDate" [(ngModel)]="createDate">
+            <h3>練習場所の紹介</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <label>タイトル</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
+                  </div>
+                  <input ngModel type="text" name="heading1" class="form-control" placeholder="Name">
+                </div>
+              </div>
+
+              <div class="mainContainer">
+                <label>画像アップロード</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                  </div>
+                  <div class="custom-file">
+                    <!-- <form action="/api/upload" method="post" enctype="multipart/form-data"> -->
+                    <input (change)="firstfileChange($event)" ngModel name="coverImage1" type="file"
+                      class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <!-- </form> -->
+                    <label class="custom-file-label" for="inputGroupFile01" id="inputGroupFileText01">{{ firstWillUploadFIleName }}</label>
+                  </div>
+                  <!-- </div> -->
+                </div>
+                <span (click)="resetFirstFileInput()">×</span>
+              </div>
+            </div>
+
+            <label>説明文</label>
+            <textarea ngModel class="form-control" name="description1" rows="4"
+              placeholder="Tell us your thoughts and feelings..."></textarea>
+
+            <h3>練習場所の紹介</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <label>タイトル</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
+                  </div>
+                  <input ngModel type="text" name="heading2" class="form-control" placeholder="Name">
+                </div>
+              </div>
+
+              <div class="mainContainer">
+                <!-- <div class="content"> -->
+                <label>画像アップロード</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                  </div>
+                  <div class="custom-file">
+                    <!-- <form action="/api/upload" method="post" enctype="multipart/form-data"> -->
+                    <input (change)="secondFileChange($event)" ngModel name="coverImage2" type="file"
+                      class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
+
+                    <!-- </form> -->
+                    <label class="custom-file-label" for="inputGroupFile02">{{ secondWillUploadFIleName }}</label>
+                  </div>
+                  <!-- </div> -->
+                </div>
+                <span (click)="resetSecondFileInput()">×</span>
+              </div>
+            </div>
+
+            <label>説明文</label>
+            <textarea ngModel class="form-control" name="description2" rows="4"
+              placeholder="Tell us your thoughts and feelings..."></textarea>
+
+            <h3>練習場所の紹介</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <label>タイトル</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
+                  </div>
+                  <input ngModel type="text" name="heading3" class="form-control" placeholder="Name">
+                </div>
+              </div>
+
+              <div class="mainContainer">
+                <!-- <div class="content"> -->
+                <label>画像アップロード</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <!-- <span class="input-group-text upload" (click)="upload()" id="btnUpload">Upload</span> -->
+                  </div>
+                  <div class="custom-file">
+                    <!-- <form action="/api/upload" method="post" enctype="multipart/form-data"> -->
+                    <input (change)="thirdFileChange($event)" ngModel name="coverImage3" type="file"
+                      class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                    <!-- </form> -->
+                    <label class="custom-file-label" for="inputGroupFile03">{{ thirdWillUploadFIleName }}</label>
+                  </div>
+                  <span (click)="resetThirdFileInput()">×</span>
+                </div>
+              </div>
+            </div>
+
+            <label>説明文</label>
+            <textarea ngModel class="form-control" name="description3" rows="4"
+              placeholder="Tell us your thoughts and feelings..."></textarea>
+            <div class="row">
+              <div class="col-md-4 mr-auto ml-auto">
+                <button [disabled]="isDisabled" class="btn btn-danger btn-lg btn-fill" type="submit">投稿！</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
