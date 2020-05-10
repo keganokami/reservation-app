@@ -6,7 +6,7 @@
           <div *ngFor="let product of products; let productId = index" class="col-sm">
               <a [routerLink]="[ product._id ]">
                   <div class="card my-card">
-                      <img src="./assets/img/uploads/{{ product.coverImage1 }}" class="card-img-top" alt="...">
+                      <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
                       <div class="card-body">
                           <h5 class="card-title">{{ product.username }}</h5>
                           <p class="card-text">{{ product.createDate }}</p>
