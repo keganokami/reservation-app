@@ -14,8 +14,7 @@ import { ProductPostComponent } from '../product/pruoduct-post/pruoduct-post.com
 const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'post', component: ProductPostComponent},
-
+    {path: 'post', component: ProductPostComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

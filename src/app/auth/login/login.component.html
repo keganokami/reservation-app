@@ -1,12 +1,11 @@
 <div class="wrapper">
-  <!-- <div class="page-header" style="background-image: url('./assets/img/login-image.jpg');"> -->
-    <div class="filter"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
           <div class="card card-register">
             <h3 class="title">ログイン</h3>
-            <div class="social-line text-center">
+            <p>投稿や閲覧をするには<br/>会員登録またはログインが必要です</p>
+            <!-- <div class="social-line text-center">
               <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
                 <i class="fa fa-facebook-square"></i>
               </a>
@@ -16,7 +15,7 @@
               <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
                 <i class="fa fa-twitter"></i>
               </a>
-            </div>
+            </div> -->
             <form class="register-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
               <label>メールアドレス</label>
               <div class="input-group form-group-no-border">
@@ -65,6 +64,4 @@
         </div>
       </div>
     </div>
-  <!-- </div> -->
 </div>
-+
