@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService, Products } from '../shared/product.service';
-import { DecimalPipe } from '@angular/common';
+import { DecimalPipe, DatePipe } from '@angular/common';
 
 interface Tokens {
   username: string;
@@ -41,12 +41,12 @@ export class ProductPostComponent implements OnInit {
     private productService: ProductService,
     private router: Router,
     private http: HttpClient,
-    private decimalPipe: DecimalPipe,
+    private datePipe: DatePipe,
     ) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.username = dataObj.username;
     this.userId = dataObj.userId;
-    // this.createDate = this.decimalPipe.transform(new Date(), 'yyyy/MM/dd HH/mm');
+    // this.createDate = this.datePipe.transform(new Date(), 'yyyy/MM/dd HH/mm');
     this.createDate = new Date();
   }
   checkIsDisabled(): void {
@@ -127,6 +127,7 @@ export class ProductPostComponent implements OnInit {
 
   post(postForm) {
     this.upload();
+    debugger
     const forms: Products = postForm.value;
     forms.coverImage1 = this.saveCoverImage1 + this.saveCoverImageExt1;
     forms.coverImage2 = this.saveCoverImage2 + this.saveCoverImageExt2;

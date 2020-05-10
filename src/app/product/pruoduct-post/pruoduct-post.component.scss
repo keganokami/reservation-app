@@ -23,7 +23,36 @@
 label.custom-file-label {
   margin: 0;
 }
+.custom-file-input:lang(en)~.custom-file-label::after {
+  content: 'Upload';
+  border-top-right-radius: 8px ;
+  border-bottom-right-radius: 8px ;
+  height: 38px;
+  padding: .55rem 0.75rem;
+}
 
 .custom-file {
   width: 18rem;
+}
+
+.trash-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #dadada;
+  color: #464646;
+  text-align: center;
+  font-size: 21px;
+  font-weight: 600;
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+.input-group>.custom-file:not(:first-child) .custom-file-label {
+  border-radius: 8px;
+  height: 40px;
+}
+
+.custom-file-label {
+  padding: .55rem 0.75rem;
 }

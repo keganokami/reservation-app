@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { Routes, RouterModule } from '@angular/router';
-import { CommonModule, DecimalPipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ProductComponent } from './product.component';
 import { AuthGuard } from '../auth/shared/auth.guard';
 
@@ -27,7 +27,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule
    ],
-   providers: [ DecimalPipe ],
+   providers: [ DatePipe ],
    bootstrap: []
 })
 export class ProductModule { }

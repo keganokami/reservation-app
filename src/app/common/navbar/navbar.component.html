@@ -1,8 +1,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-brand" color-on-scroll="500">
-  <div class="container">
-    <div class="navbar-default">
-      <h2><a class="navbar-brand" [routerLink]="['/']">みんなの練習場所</a></h2>
+  <div class="container" id="menu-dropdown">
+    <div class="navbar-default" style="display: contents;">
+      <a class="navbar-brand my-header-link-size" [routerLink]="['/']">みんなの練習場所</a>
       <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
         (click)="sidebarToggle()">
@@ -18,7 +18,7 @@
             <a [routerLink]="['/post']" class="btn btn-danger btn-round">投稿</a>
           </li>
           <li class="nav-item">
-            <a (click)="logout()" class="btn btn-outline-danger btn-round"><i class="nc-icon nc-layout-11"></i>ログアウト</a>
+            <a (click)="logout()" [routerLink]="['/login']" class="btn btn-outline-default btn-round"><i class="fas fa-sign-out-alt"></i>ログアウト</a>
           </li>
         </ul>
       </ng-container>
@@ -49,10 +49,10 @@
                   </a>
               </li> -->
           <li class="nav-item">
-            <a [routerLink]="['/login']" class="nav-link"><i class="nc-icon nc-layout-11"></i>メンバーログイン</a>
+            <a [routerLink]="['/login']" class="btn btn-outline-danger btn-round"><i class="nc-icon nc-layout-11"></i>メンバーログイン</a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/register']" class="btn btn-danger btn-round">新規会員登録</a>
+            <a [routerLink]="['/register']" class="btn btn-outline-danger btn-round">新規会員登録</a>
           </li>
         </ul>
       </ng-container>

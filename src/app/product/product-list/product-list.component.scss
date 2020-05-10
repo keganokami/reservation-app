@@ -1,6 +1,10 @@
-.my-card {
-  width: 15rem;
-  height: 10rem;
+@media (min-width: 960px) {
+  .my-card {
+    width: 15.5rem;
+  }
+  .col-sm {
+    flex-grow: 0;
+}
 }
 
 .card-img-top {

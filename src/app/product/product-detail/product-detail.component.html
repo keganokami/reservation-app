@@ -1,12 +1,12 @@
 <ng-container *ngIf="product">
   <!-- <div class="page-header page-header-xs" data-parallax="true"> -->
-    <div class="filter"></div>
+  <!-- <div class="filter"></div>
     <div class="container">
       <div class="carousel-caption text-left">
         <h2>{{product.username}}</h2>
         <p>{{product.createDate}}</p>
       </div>
-    </div>
+    </div> -->
   <!-- </div> -->
 
 
@@ -20,41 +20,42 @@
               user engaged by providing meaningful information. Remember that by this time, the user is curious,
               otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
             <br>
-            <a href="#paper-kit" class="btn btn-danger btn-round">See Details</a>
           </div>
         </div>
         <br /><br />
         <div class="row">
           <div class="col-md-4">
             <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-album-2"></i>
-              </div>
-              <div class="description">
-                <h4 class="info-title">{{ product.heading1}}</h4>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-bulb-63"></i>
-              </div>
-              <div class="description">
-                <h4 class="info-title">{{ product.heading2}}</h4>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+              <div class="card my-card">
+                <img class="my-img-size card-img-top" src="./assets/img/uploads/{{ product.coverImage1 }}" alt="">
+                <div class="card-body my-card">
+                  <h5 class="card-title">{{ product.heading1 }}</h5>
+                  <p class="card-text" style="text-align: left;">This is the paragraph where you can write more details about your product. Keep you
+                    user engaged by providing meaningful information. Remember that by this time, the user is curious,
+                    otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.{{ product.description1 }}</p>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-chart-bar-32"></i>
+              <div class="card my-card">
+                <img class="my-img-size card-img-top" src="./assets/img/uploads/{{ product.coverImage2 }}" alt="">
+                <div class="card-body my-card">
+                  <h5 class="card-title">{{ product.heading2 }}</h5>
+                  <p class="card-text">{{ product.description2 }}</p>
+                </div>
               </div>
-              <div class="description">
-                <h4 class="info-title">{{ product.heading3}}</h4>
-                <a href="#pkp" class="btn btn-link btn-danger">See more</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="info">
+              <div class="card my-card">
+                <img class="my-img-size card-img-top" src="./assets/img/uploads/{{ product.coverImage3 }}" alt="">
+                <div class="card-body my-card">
+                  <h5 class="card-title">{{ product.heading3 }}</h5>
+                  <p class="card-text">{{ product.description3 }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -62,54 +63,12 @@
       </div>
     </div>
 
-    <div class="container marketing">
-      <!-- START THE FEATURETTES -->
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">{{ product.heading1 }}</h2>
-          <p class="lead">{{ product.description1 }}</p>
-        </div>
-        <div class="col-md-5">
-          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage1 + ')'}">
-          </div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">{{ product.heading2 }}</h2>
-          <p class="lead">{{ product.description2 }}</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage2 + ')'}">
-          </div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">{{ product.heading3 }}</h2>
-          <p class="lead">{{ product.description3 }}</p>
-        </div>
-        <div class="col-md-5">
-          <div class="img-size" [ngStyle]="{'background-image':' url(' + './assets/img/uploads/' + product.coverImage3 + ')'}">
-          </div>
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-      <!-- /END THE FEATURETTES -->
-    </div><!-- /.container -->
-  </div>
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+  </div><!-- /.container -->
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    <p>{{product.username}}&middot; {{product.createDate}}</p>
   </footer>
 </ng-container>

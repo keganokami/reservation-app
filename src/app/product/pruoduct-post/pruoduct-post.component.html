@@ -1,8 +1,5 @@
 <div class="wrapper">
-  <div class="page-header page-header-xs" data-parallax="true"
-    style="background-image: url('./assets/img/cat-header.jpg');">
-    <!-- <div class="filter"></div> -->
-  </div>
+
   <div class="section landing-section">
     <div class="container">
       <div class="row">
@@ -35,11 +32,14 @@
                     <input (change)="firstfileChange($event)" ngModel name="coverImage1" type="file"
                       class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                     <!-- </form> -->
-                    <label class="custom-file-label" for="inputGroupFile01" id="inputGroupFileText01">{{ firstWillUploadFIleName }}</label>
+                    <label class="custom-file-label" for="inputGroupFile01"
+                      id="inputGroupFileText01">{{ firstWillUploadFIleName }}</label>
+
                   </div>
+                  <span class="trash-btn" (click)="resetFirstFileInput()">×</span>
                   <!-- </div> -->
                 </div>
-                <span (click)="resetFirstFileInput()">×</span>
+
               </div>
             </div>
 
@@ -74,8 +74,9 @@
                     <label class="custom-file-label" for="inputGroupFile02">{{ secondWillUploadFIleName }}</label>
                   </div>
                   <!-- </div> -->
+                  <span class="trash-btn" (click)="resetSecondFileInput()">×</span>
                 </div>
-                <span (click)="resetSecondFileInput()">×</span>
+
               </div>
             </div>
 
@@ -109,7 +110,7 @@
                     <!-- </form> -->
                     <label class="custom-file-label" for="inputGroupFile03">{{ thirdWillUploadFIleName }}</label>
                   </div>
-                  <span (click)="resetThirdFileInput()">×</span>
+                  <span class="trash-btn" (click)="resetSecondFileInput()">×</span>
                 </div>
               </div>
             </div>
