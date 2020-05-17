@@ -33,13 +33,6 @@ app.use(bodyParser.urlencoded({
 app.use('/api/v1/products', productRoutes)
 app.use('/api/v1/users', usreRoutes)
 
-app.post('/api/upload', multipartMiddleware, (req, res) => {
-  console.log(req.files);
-  res.json({
-      'message': 'File uploaded successfully'
-  });
-})
-
 if(process.env.NODE_ENV === 'production') {
   const appPath = path.join( __dirname, '..', 'dist', 'reservation-app')
   app.use(express.static(appPath))

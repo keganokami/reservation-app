@@ -1,3 +1,48 @@
 .my-img-size {
   height: 20rem;
 }
+
+textarea {
+  border-radius: 2px;
+  padding: 2px;
+  width: 10rem;
+  text-align: left !important;
+}
+.input-reset-style[disabled] {
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  transition: ease-in-out 0.2s;
+  height: auto;
+}
+
+.input-style {
+  transition: ease-in-out 0.3s;
+  border-radius: 2px;
+  padding: 2px;
+}
+
+textarea {
+  border-radius: 2px;
+  padding: 2px;
+  width: 20rem;
+  height: 10rem;
+  text-align: left;
+}
+
+.my-refrect-btn-area {
+  width: 100%;
+  text-align: center;
+  button {
+    width: 10rem;
+    margin: 0 auto;
+  }
+}
