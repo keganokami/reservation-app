@@ -77,6 +77,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         }
       );
       await this.getData();
+      location.reload();
     }
   }
 }
