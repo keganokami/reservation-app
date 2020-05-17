@@ -11,7 +11,6 @@
 
   <form action="" class="contact-form" #postForm="ngForm" (ngSubmit)="updatePost(postForm)" method="post">
     <input [(ngModel)]="product._id" name="_id" type="hidden">
-    <input type="hidden" ngModel name="createDate" [(ngModel)]="createDate">
     <div class="main">
       <div class="section text-center">
         <div class="container">

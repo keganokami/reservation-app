@@ -66,7 +66,8 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   }
 
   async updatePost(updateData: any) {
-    this.createDate = new Date();
+    const forms: Products = updateData.value;
+    forms.createDate = new Date();
     if (this.isDisabled) {
       console.log(updateData);
       this.productService.updateOne(updateData.value).subscribe(
