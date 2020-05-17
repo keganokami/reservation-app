@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Products {
+  _id: string; // mongoDBのオブジェクトID
   username?: string; // localStrageから取得して送る
   userId?: string; 　// localStrageから取得して送る
   coverImage1: string;
@@ -38,5 +39,9 @@ export class ProductService {
 
   upload(images: any): Observable<any> {
       return this.http.post('/api/v1/products/upload', images);
+  }
+
+  updateOne(updateData: Products): Observable<any> {
+    return this.http.put('/api/v1/products/update', updateData);
   }
 }

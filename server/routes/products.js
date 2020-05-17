@@ -60,4 +60,35 @@ router.post('/:posts', function(req, res) {
   })
 })
 
+router.put('/:update', function(req, res) {
+
+  const {
+    _id,
+    heading1,
+    heading2,
+    heading3,
+    description1,
+    description2,
+    description3,
+    createDate,
+  } = req.body
+
+  Product.updateOne(
+    {'_id': _id},
+    { $set: {
+      'heading1': heading1,
+      'heading2': heading2,
+      'heading3': heading3,
+      'description1': description1,
+      'description2': description2,
+      'description3': description3,
+      'createDate': createDate,
+    }},(err) => {
+    if (err) {
+        return res.status(422).send({ error: [{ title: 'error', detail: 'error' }] })
+    }
+    return res.json({ "update": true })
+  })
+})
+
 module.exports = router
