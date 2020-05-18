@@ -23,8 +23,8 @@ mongoose.connect(config.DB_URI, {
 )
 
 const app = express()
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-app.use(express.json({ extended: true, limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.json({ extended: true, limit: '50mb' }));
 // エンドポイントが呼ばれた時に request.body.usernameみたいな感じでpost用のbodyから値がとれるようになる
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
