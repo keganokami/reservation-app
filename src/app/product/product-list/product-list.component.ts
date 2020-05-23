@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   isPrevPage: boolean = false;
   pageNum: number[] = [];
   begin: number = 0;
-  length: number = 4;
+  length: number = 8;
   pageNumBox: number[]; // pageの配列
   isActivePage: number = 0;　// アクティブなページ
   pageAryCount: number;
@@ -87,14 +87,5 @@ export class ProductListComponent implements OnInit, OnChanges {
     this.createPrevPageArray(this.isActivePage);
     this.onButtonClickPager(this.isActivePage);
     this.isShowPrevPageButton();
-  }
-
-  jumpToHoge(id: any) {
-    // パス /foo#hoge に遷移する
-    if (id !== null) {
-      setTimeout(() => {
-        this.router.navigate(['products/' + id], { fragment: 'detail' });
-      }, 1500);
-    }
   }
 }

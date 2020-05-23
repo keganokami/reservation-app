@@ -19,10 +19,5 @@ export class ProductComponent implements OnInit {
         (data) => this.products = data,
         (err) => console.log(err),
       );
-      console.log(this.isProductSelected);
   }
-  getData(eventData: boolean) {
-    this.isLoadingData = eventData;
-  }
-
 }

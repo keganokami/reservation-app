@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm" *ngFor="let product of products | slice: begin: begin+length">
-        <a [routerLink]="[ product._id ]" (click)="jumpToHoge(product._id)">
+        <a [routerLink]="[ product._id ]">
           <div class="card my-card">
             <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
             <div class="card-body">
