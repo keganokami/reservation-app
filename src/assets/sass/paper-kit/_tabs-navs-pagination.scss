@@ -213,19 +213,21 @@
 }
 
 .pagination > .page-item > .page-link,
-.pagination > .page-item > span,
-.pagination > .page-item:first-child > .page-link,
-.pagination > .page-item:first-child > span,
-.pagination > .page-item:last-child > .page-link,
-.pagination > .page-item:last-child > span{
+.pagination > .page-item > span
+// .pagination > .page-item:first-child > .page-link,
+// .pagination > .page-item:first-child > span,
+// .pagination > .page-item:last-child > .page-link,
+// .pagination > .page-item:last-child > span
+{
     background-color: transparent;
     border: 2px solid $danger-color;
     border-radius: 20px;
     color: $danger-color;
-    height: $line-height;
+    height: 32px;
     margin: 0 2px;
-    min-width: 36px;
+    min-width: 30px;
     font-weight: $font-weight-bold;
+    padding: 0.4rem .60rem;
 }
 
 .nav-pills-danger > .page-item > .page-link,

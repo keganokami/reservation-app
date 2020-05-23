@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnChanges, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProductService, Products } from '../shared/product.service';
@@ -22,17 +22,18 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     address: new FormControl()
   });
 
+  @Input() isProductSelected: boolean = false;
   state_default: boolean = true;
   isSameUser: boolean = false;
   isDisabled: boolean = true;
   createDate: Date;
   userId: string = null;
+  /* localStrageに保存しているトークン */
   tokenData: string = localStorage.getItem('app-meta');
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private router: Router,
   ) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.userId = dataObj.userId;
@@ -48,7 +49,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.getData();
   }
 
-  async getData() {
+  getData() {
     this.route.paramMap.subscribe(params => {
       const productObservablue = this.productService.getProductById(params.get('productId'));
       productObservablue.subscribe((data) => {
@@ -73,7 +74,6 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       this.productService.updateOne(updateData.value).subscribe(
         (data) => {
           console.log('updated');
-          this.router.navigate(['/products/' + this.product._id]);
         }
       );
       await this.getData();

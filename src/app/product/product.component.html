@@ -1,2 +1,6 @@
-
-<router-outlet></router-outlet>
+<ng-container *ngIf="products">
+  <router-outlet>
+    <app-product-list [products]="products"></app-product-list>
+    <app-product-detail [isProductSelected]></app-product-detail>
+  </router-outlet>
+</ng-container>

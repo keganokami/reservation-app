@@ -1,52 +1,43 @@
-<div class="wrapper"  style="margin-top: 10rem;">
-  <!-- <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/cat-header.jpg');">
-  </div> -->
+<div class="wrapper" style="margin-top: 10rem;" *ngIf="products">
+  <ng-container></ng-container>
   <div class="container">
-      <div class="row">
-          <div *ngFor="let product of products; let productId = index" class="col-sm">
-              <a [routerLink]="[ product._id ]">
-                  <div class="card my-card">
-                      <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">{{ product.username }}</h5>
-                          <p class="card-text">{{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</p>
-                      </div>
-                  </div>
-              </a>
+    <div class="row">
+      <div class="col-sm" *ngFor="let product of products | slice: begin: begin+length">
+        <a [routerLink]="[ product._id ]" (click)="jumpToHoge(product._id)">
+          <div class="card my-card">
+            <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.username }}</h5>
+              <p class="card-text">{{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</p>
+            </div>
           </div>
+        </a>
       </div>
+    </div>
+    <nav class="my-pagination" aria-label="...">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="isPrevPage">
+          <a class="page-link" (click)="goPrevPage()" tabindex="-1">前</a>
+        </li>
+        <li *ngIf="pageNum[0] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[0]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[0])">{{pageNum[0] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[1] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[1]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[1])">{{pageNum[1] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[2] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[2]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[2])">{{pageNum[2] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[3] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[3]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[3])">{{pageNum[3] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[4] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[4]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[4])">{{pageNum[4] + 1}}</a>
+        </li>
+        <li class="page-item" *ngIf="isActivePage === pageNum[4]">
+          <a class="page-link" (click)="goNextPage()">次</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
-<!-- <div class="section" id="carousel">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-8 mr-auto ml-auto">
-              <div class="card page-carousel">
-                  <ngb-carousel>
-                      <ng-template ngbSlide>
-                          <img src="./assets/img/uploads/f3xf2r37cb1scaxtlb26.jpg" alt="Random first slide">
-                          <div class="carousel-caption">
-                              <p>Somewhere</p>
-                          </div>
-                      </ng-template>
-                      <ng-template ngbSlide>
-                          <img src="./assets/img/uploads/n8kin1jbynt4a9b7hk9t.jpg" alt="Random second slide">
-                          <div class="carousel-caption">
-                              <p>Somewhere else</p>
-                          </div>
-                      </ng-template>
-                      <ng-template ngbSlide>
-                          <img src="./assets/img/uploads/n8kin1jbynt4a9b7hk9t.jpg" alt="Random third slide">
-                          <div class="carousel-caption">
-                              <p>Here it is</p>
-                          </div>
-                      </ng-template>
-                  </ngb-carousel>
-              </div>
-          </div>
-      </div>
-  </div>
-</div> -->
-
-
-

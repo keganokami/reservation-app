@@ -10,3 +10,10 @@
 .card-img-top {
   height: 15rem;
 }
+
+.my-pagination {
+  display: flex;
+  .pagination {
+    margin: 0 auto;
+  }
+}
