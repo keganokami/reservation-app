@@ -1,5 +1,4 @@
 <div class="wrapper">
-
   <div class="section landing-section">
     <div class="container">
       <div class="row">
@@ -11,23 +10,48 @@
             <input type="hidden" ngModel name="userId" [(ngModel)]="userId">
             <input type="hidden" ngModel name="createDate" [(ngModel)]="createDate">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-8">
+                <label>場所の名前</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
+                  </div>
+                  <input required ngModel type="text" name="heading" class="form-control" placeholder="場所の名前">
+                </div>
+              </div>
+
+              <!-- 都道府県 -->
+              <div class="form-group col-md-4">
+                <label for="inputState">都道府県</label>
+                <select ngModel id="inputState" name="prefecture" class="form-control">
+                  <option selected>選択...</option>
+                  <option id="update-state" *ngFor="let state of prefectures.states" [value]="state.value">
+                    {{state.viewValue}}</option>
+                </select>
+              </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <div class="row">
+              <!-- <div class="col-md-6">
                 <label>タイトル</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
                   </div>
-                  <input ngModel type="text" name="heading1" class="form-control" placeholder="タイトル">
+                  <input required ngModel type="text" name="heading1" class="form-control" placeholder="タイトル">
                 </div>
-              </div>
+              </div> -->
 
-              <div class="col-md-6">
+
+              <div class="col-md-8">
+                <h5 class="intro1">紹介1</h5>
                 <label>画像アップロード</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                   </div>
                   <div class="custom-file">
-                    <input (change)="firstfileChange($event)" ngModel name="coverImage1" type="file"
+                    <input required (change)="firstfileChange($event)" ngModel name="coverImage1" type="file"
                       class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
 
                     <label class="custom-file-label" for="inputGroupFile01"
@@ -39,27 +63,29 @@
             </div>
 
             <label>説明文</label>
-            <textarea ngModel class="form-control" name="description1" rows="4"
+            <textarea required ngModel class="form-control" name="description1" rows="4"
               placeholder="東京都の北区にある公園で、、、"></textarea>
 
+            <hr class="featurette-divider">
             <div class="row">
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <label>タイトル</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
                   </div>
-                  <input ngModel type="text" name="heading2" class="form-control" placeholder="タイトル">
+                  <input required ngModel type="text" name="heading2" class="form-control" placeholder="タイトル">
                 </div>
-              </div>
+              </div> -->
 
-              <div class="col-md-6">
+              <div class="col-md-8">
+                <h5 class="intro2">紹介2</h5>
                 <label>画像アップロード</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                   </div>
                   <div class="custom-file">
-                    <input (change)="secondFileChange($event)" ngModel name="coverImage2" type="file"
+                    <input required (change)="secondFileChange($event)" ngModel name="coverImage2" type="file"
                       class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
                     <label class="custom-file-label" for="inputGroupFile02">{{ secondWillUploadFIleName }}</label>
                   </div>
@@ -69,27 +95,29 @@
             </div>
 
             <label>説明文</label>
-            <textarea ngModel class="form-control" name="description2" rows="4"
+            <textarea required ngModel class="form-control" name="description2" rows="4"
               placeholder="私のお気に入りの公園で、、、"></textarea>
 
+            <hr class="featurette-divider">
             <div class="row">
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <label>タイトル</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
                   </div>
-                  <input ngModel type="text" name="heading3" class="form-control" placeholder="タイトル">
+                  <input required ngModel type="text" name="heading3" class="form-control" placeholder="タイトル">
                 </div>
-              </div>
+              </div> -->
 
-              <div class="col-md-6">
+              <div class="col-md-8">
+                <h5 class="intro3">紹介3</h5>
                 <label>画像アップロード</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                   </div>
                   <div class="custom-file">
-                    <input (change)="thirdFileChange($event)" ngModel name="coverImage3" type="file"
+                    <input required (change)="thirdFileChange($event)" ngModel name="coverImage3" type="file"
                       class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
                     <label class="custom-file-label" for="inputGroupFile03">{{ thirdWillUploadFIleName }}</label>
                   </div>
@@ -99,14 +127,17 @@
             </div>
 
             <label>説明文</label>
-            <textarea ngModel class="form-control" name="description3" rows="4"
+            <textarea required ngModel class="form-control" name="description3" rows="4"
               placeholder="この公園では・・・"></textarea>
             <div class="row">
               <div class="col-md-4 mr-auto ml-auto">
-                <button [disabled]="isDisabled" class="btn btn-danger btn-lg btn-fill" type="submit">投稿！</button>
+                <button [disabled]="!postForm.valid" class="btn btn-danger btn-lg btn-fill" type="submit">投稿！</button>
               </div>
             </div>
           </form>
+          <div *ngIf="errors && errors.length>0" class="alert alert-danger" style="margin-top: 1rem;">
+            <p *ngFor="let error of errors">{{ error.detail}}</p>
+          </div>
         </div>
       </div>
     </div>

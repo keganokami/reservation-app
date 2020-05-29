@@ -6,12 +6,14 @@ export interface Products {
   _id: string; // mongoDBのオブジェクトID
   username?: string; // localStrageから取得して送る
   userId?: string; 　// localStrageから取得して送る
+  heading: string;
+  prefecture: string;
   coverImage1: string;
   coverImage2: string;
   coverImage3: string;
-  heading1: string;
-  heading2?: string;
-  heading3?: string;
+  // heading1: string;
+  // heading2?: string;
+  // heading3?: string;
   description1: string;
   description2?: string;
   description3?: string;

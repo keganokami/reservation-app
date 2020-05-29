@@ -6,13 +6,37 @@
         <div class="section text-center">
           <div class="container">
             <div class="row">
-              <div class="col-md-8 mr-auto ml-auto">
-                <h2 class="title">Let's talk product</h2>
-                <h5 class="description">This is the paragraph where you can write more details about your product. Keep
-                  you
-                  user engaged by providing meaningful information. Remember that by this time, the user is curious,
-                  otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
-                <br>
+              <div class="mr-auto ml-auto">
+                 <h5>場所の名前</h5>
+                <h2 class="my-title">
+                  <ng-container *ngIf="isSameUser; else notEditableUser1">
+                    <input [(ngModel)]="product.heading" type="text" name="heading" class="form-control">
+                  </ng-container>
+                  <ng-template #notEditableUser1>
+                    {{ product.heading }}
+                  </ng-template>
+                </h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mr-auto ml-auto">
+                <p class="my-title-prefecture">
+                  <ng-container *ngIf="isSameUser; else notEditableUser9">
+                    <select (change)="getSelectedPref($event.target.value)" ([ngModel])="product.prefecture"
+                      id="inputState" class="form-control">
+                      <option id="update-state" *ngFor="let state of prefectures.states" [value]="state.value"
+                        [selected]="product.prefecture === state.value">
+                        {{state.viewValue}}</option>
+                    </select>
+                    <input [(ngModel)]="selectedPrefecture ? selectedPrefecture : product.prefecture" type="hidden"
+                      name="prefecture">
+                  </ng-container>
+                  <ng-template #notEditableUser9>
+                    <ng-container *ngFor="let value of prefectures.states">
+                      <p *ngIf="value.value === product.prefecture"> {{ value.viewValue }}</p>
+                    </ng-container>
+                  </ng-template>
+                </p>
               </div>
             </div>
             <br /><br />
@@ -23,7 +47,7 @@
                     <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt="">
                     <div class="card-body my-card">
                       <!-- heading -->
-                      <h5 class="card-title">
+                      <!-- <h5 class="card-title">
                         <ng-container *ngIf="isSameUser; else notEditableUser1">
                           <input [(ngModel)]="product.heading1" type="text" name="heading1" class="form-control"
                             placeholder="タイトル">
@@ -31,7 +55,7 @@
                         <ng-template #notEditableUser1>
                           <p>{{ product.heading1 }}</p>
                         </ng-template>
-                      </h5>
+                      </h5> -->
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled1">
                         <textarea [(ngModel)]="product.description1" class="form-control"
@@ -49,7 +73,7 @@
                   <div class="card my-card">
                     <img class="my-img-size card-img-top" src="{{ product.coverImage2 }}" alt="">
                     <div class="card-body my-card">
-                      <h5 class="card-title">
+                      <!-- <h5 class="card-title">
                         <ng-container *ngIf="isSameUser; else notEditableUser2">
                           <input [(ngModel)]="product.heading2" type="text" name="heading2" class="form-control"
                             placeholder="タイトル">
@@ -57,7 +81,7 @@
                         <ng-template #notEditableUser2>
                           <p>{{ product.heading2 }}</p>
                         </ng-template>
-                      </h5>
+                      </h5> -->
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled2">
                         <textarea [(ngModel)]="product.description2" class="form-control"
@@ -75,7 +99,7 @@
                   <div class="card my-card">
                     <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt="">
                     <div class="card-body my-card">
-                      <h5 class="card-title">
+                      <!-- <h5 class="card-title">
                         <ng-container *ngIf="isSameUser; else notEditableUser3">
                           <input [(ngModel)]="product.heading3" type="text" name="heading3" class="form-control"
                             placeholder="タイトル">
@@ -83,7 +107,7 @@
                         <ng-template #notEditableUser3>
                           <p>{{ product.heading3 }}</p>
                         </ng-template>
-                      </h5>
+                      </h5> -->
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled3">
                         <textarea [(ngModel)]="product.description3" class="form-control"
@@ -111,7 +135,7 @@
     </form>
     <!-- FOOTER -->
     <footer class="container">
-      <p class="float-right"><a href="#">Back to top</a></p>
+      <p class="float-right"><a class="btn btn-link btn-primary" [routerLink]="['/products']">ホームへ</a></p>
       <p>{{product.username}}&middot; {{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</p>
     </footer>
   </ng-container>
