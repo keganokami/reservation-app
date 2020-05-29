@@ -3,6 +3,10 @@ import { ProductService, Products } from '../shared/product.service';
 import { Router } from '@angular/router';
 import { products } from 'src/app/products';
 
+interface Tokens {
+  username: string;
+  userId: string;
+}
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -11,6 +15,7 @@ import { products } from 'src/app/products';
 export class ProductListComponent implements OnInit, OnChanges {
 
   @Input() products: Products[];
+  myProducts: Products[];
   isPrevPage: boolean = false;
   pageNum: number[] = [];
   begin: number = 0;
@@ -18,8 +23,17 @@ export class ProductListComponent implements OnInit, OnChanges {
   pageNumBox: number[]; // pageの配列
   isActivePage: number = 0;　// アクティブなページ
   pageAryCount: number;
+  myPageAryCount: number;　// 自分の投稿で絞り込む時
+  buttonText: string = '自分の投稿のみを表示';
+
+  isFilterdUSerId: boolean = false;
+
+  tokenData: string = localStorage.getItem('app-meta');
+  userId: string;
 
   constructor(private productService: ProductService, private router: Router) {
+    const dataObj: Tokens = JSON.parse(this.tokenData);
+    this.userId = dataObj.userId;
   }
   ngOnChanges(): void {
     if (this.products) {
@@ -87,5 +101,15 @@ export class ProductListComponent implements OnInit, OnChanges {
     this.createPrevPageArray(this.isActivePage);
     this.onButtonClickPager(this.isActivePage);
     this.isShowPrevPageButton();
+  }
+
+  // 自分の投稿で絞り込んだ時のページング変更処理
+  onClickToggleAllPoststoMyPosts() {
+    this.isFilterdUSerId = !this.isFilterdUSerId;
+    this.buttonText = this.isFilterdUSerId ? '全件を表示' : '自分の投稿のみを表示';
+    this.myProducts = this.products.filter(item => item.userId === this.userId);
+    this.myPageAryCount = this.myProducts.length;
+    this.pageAryCount = this.isFilterdUSerId ? Math.ceil(this.myPageAryCount / this.length) : Math.ceil(this.products.length / this.length);
+    this.onButtonClickPager(0);
   }
 }

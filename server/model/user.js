@@ -16,7 +16,7 @@ const passwordValidator = {
     const pattern = /^(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}$/i
     return pattern.test(v)
   },
-  message: '半角英数字が1種類以上必要です。'
+  message: 'パスワードは半角英数字が1種類以上必要です。'
 }
 
 const UserSchema = new Schema({

@@ -6,6 +6,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ProductComponent } from './product.component';
 import { AuthGuard } from '../auth/shared/auth.guard';
 import { FormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
+    MatSliderModule
    ],
    providers: [ DatePipe ],
    bootstrap: []

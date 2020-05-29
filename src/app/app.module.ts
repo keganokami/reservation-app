@@ -8,6 +8,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { DecimalPipe } from '@angular/common';
 
 
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -17,7 +18,7 @@ import { DecimalPipe } from '@angular/common';
       BrowserModule,
       HttpClientModule,
       AppRoutingModule,
-      AuthModule
+      AuthModule,
    ],
    providers: [ DecimalPipe ],
    bootstrap: [
