@@ -1,23 +1,30 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Products, ProductService } from './shared/product.service';
+import { toUnicode } from 'punycode';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
   isLoadingData: boolean;
   products: Products;
   @Input() isProductSelected;
+  isPosting: boolean;
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-      this.isLoadingData = true;
-      this.productService.getProducts().subscribe(
-        (data) => this.products = data,
-        (err) => console.log(err),
-      );
+    this.isPosting = true;
+    this.isLoadingData = true;
+    this.productService.getProducts().subscribe(
+      (data) => {
+        this.products = data;
+        this.isPosting = false;
+      },
+      (err) => console.log(err),
+    );
+
   }
 }

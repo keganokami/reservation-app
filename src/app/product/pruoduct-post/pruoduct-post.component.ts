@@ -84,7 +84,7 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage2: any = null;
   saveCoverImage3: any = null;
 
-  isPosting: boolean;
+
 
   constructor(
     private productService: ProductService,
@@ -171,7 +171,6 @@ export class ProductPostComponent implements OnInit {
    * @param postForm postする情報
    */
   post(postForm) {
-    this.isPosting = true;
     // 保存する際は画像はBase64にエンコードされるので詰め替える
     const forms: Products = postForm.value;
     forms.coverImage1 = this.saveCoverImage1;
@@ -185,8 +184,6 @@ export class ProductPostComponent implements OnInit {
         this.errors = err.error.error;
       }
     );
-    this.isPosting = false;
-
   }
 
   /*

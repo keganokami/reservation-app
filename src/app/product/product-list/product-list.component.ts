@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   isFilterdUSerId: boolean = false;
 
+
   tokenData: string = localStorage.getItem('app-meta');
   userId: string;
 
