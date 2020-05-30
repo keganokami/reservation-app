@@ -1,13 +1,29 @@
-<div class="wrapper" style="margin-top: 7rem;" *ngIf="products">
-
-  <div class="container">
-    <div class="row">
-      <button [ngClass]="isFilterdUSerId ? 'btn-info' : 'btn-success'" class="ml-auto btn btn-round show-my-posts-btn" (click)="onClickToggleAllPoststoMyPosts()">{{ buttonText }}</button>
-    </div>
-    <div class="row">
-      <ng-container *ngIf="isFilterdUSerId else filterUserPosts">
-        <div class="col-sm" *ngFor="let product of myProducts | slice: begin: begin+length">
-          <div *ngIf="product.userId === userId">
+<div class="wrapper" style="margin-top: 7rem;">
+  <ng-container *ngIf="products">
+    <div class="container">
+      <div class="row">
+        <button [ngClass]="isFilterdUSerId ? 'btn-info' : 'btn-success'" class="ml-auto btn btn-round show-my-posts-btn"
+          (click)="onClickToggleAllPoststoMyPosts()">{{ buttonText }}</button>
+      </div>
+      <div class="row">
+        <ng-container *ngIf="isFilterdUSerId else filterUserPosts">
+          <div class="col-sm" *ngFor="let product of myProducts | slice: begin: begin+length">
+            <div *ngIf="product.userId === userId">
+              <a [routerLink]="[ product._id ]">
+                <div class="card my-card">
+                  <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.heading }}</h5>
+                    <span class="card-username">{{ product.username }}</span>
+                    <span class="card-text">{{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #filterUserPosts>
+          <div class="col-sm" *ngFor="let product of products | slice: begin: begin+length">
             <a [routerLink]="[ product._id ]">
               <div class="card my-card">
                 <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
@@ -19,47 +35,38 @@
               </div>
             </a>
           </div>
-        </div>
-      </ng-container>
-      <ng-template #filterUserPosts>
-        <div class="col-sm" *ngFor="let product of products | slice: begin: begin+length">
-          <a [routerLink]="[ product._id ]">
-            <div class="card my-card">
-              <img src="{{ product.coverImage1 }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{ product.heading }}</h5>
-                <span class="card-username">{{ product.username }}</span>
-                <span class="card-text">{{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </ng-template>
+        </ng-template>
+      </div>
     </div>
-  </div>
-  <nav class="my-pagination" aria-label="...">
-    <ul class="pagination">
-      <li class="page-item" *ngIf="isPrevPage">
-        <a class="page-link" (click)="goPrevPage()" tabindex="-1">前</a>
-      </li>
-      <li *ngIf="pageNum[0] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[0]}">
-        <a class="page-link" (click)="onButtonClickPager(pageNum[0])">{{pageNum[0] + 1}}</a>
-      </li>
-      <li *ngIf="pageNum[1] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[1]}">
-        <a class="page-link" (click)="onButtonClickPager(pageNum[1])">{{pageNum[1] + 1}}</a>
-      </li>
-      <li *ngIf="pageNum[2] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[2]}">
-        <a class="page-link" (click)="onButtonClickPager(pageNum[2])">{{pageNum[2] + 1}}</a>
-      </li>
-      <li *ngIf="pageNum[3] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[3]}">
-        <a class="page-link" (click)="onButtonClickPager(pageNum[3])">{{pageNum[3] + 1}}</a>
-      </li>
-      <li *ngIf="pageNum[4] + 1 <= pageAryCount" class="page-item" [ngClass]="{'active': isActivePage === pageNum[4]}">
-        <a class="page-link" (click)="onButtonClickPager(pageNum[4])">{{pageNum[4] + 1}}</a>
-      </li>
-      <li class="page-item" *ngIf="isActivePage === pageNum[4]">
-        <a class="page-link" (click)="goNextPage()">次</a>
-      </li>
-    </ul>
-  </nav>
+    <nav class="my-pagination" aria-label="...">
+      <ul class="pagination">
+        <li class="page-item" *ngIf="isPrevPage">
+          <a class="page-link" (click)="goPrevPage()" tabindex="-1">前</a>
+        </li>
+        <li *ngIf="pageNum[0] + 1 <= pageAryCount" class="page-item"
+          [ngClass]="{'active': isActivePage === pageNum[0]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[0])">{{pageNum[0] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[1] + 1 <= pageAryCount" class="page-item"
+          [ngClass]="{'active': isActivePage === pageNum[1]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[1])">{{pageNum[1] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[2] + 1 <= pageAryCount" class="page-item"
+          [ngClass]="{'active': isActivePage === pageNum[2]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[2])">{{pageNum[2] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[3] + 1 <= pageAryCount" class="page-item"
+          [ngClass]="{'active': isActivePage === pageNum[3]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[3])">{{pageNum[3] + 1}}</a>
+        </li>
+        <li *ngIf="pageNum[4] + 1 <= pageAryCount" class="page-item"
+          [ngClass]="{'active': isActivePage === pageNum[4]}">
+          <a class="page-link" (click)="onButtonClickPager(pageNum[4])">{{pageNum[4] + 1}}</a>
+        </li>
+        <li class="page-item" *ngIf="isActivePage === pageNum[4]">
+          <a class="page-link" (click)="goNextPage()">次</a>
+        </li>
+      </ul>
+    </nav>
+  </ng-container>
 </div>

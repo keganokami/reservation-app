@@ -4,7 +4,8 @@ const Product = require('../model/product')
 const controll = require('../contorollers/user')
 
 router.get('', (req, res) => {
-  Product.find({}, (err, foundProducts) => {
+  Product.find({}, null, {sort:{ createDate: -1}},
+    (err, foundProducts) => {
     res.json(foundProducts)
   })
 })
