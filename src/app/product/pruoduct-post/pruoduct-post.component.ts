@@ -66,7 +66,6 @@ interface Tokens {
   styleUrls: ['./pruoduct-post.component.scss']
 })
 export class ProductPostComponent implements OnInit {
-  addressForm: FormGroup;
   errors: any;
   tokenData: string = localStorage.getItem('app-meta');
   username: string;
@@ -77,7 +76,7 @@ export class ProductPostComponent implements OnInit {
   firstUploadedFiles: Array<File> = null;
   secondUploadedFiles: Array<File> = null;
   thirdUploadedFiles: Array<File> = null;
-  // isDisabled: boolean = true;
+
   firstWillUploadFIleName: string = 'ファイルを選択してください';
   secondWillUploadFIleName: string = 'ファイルを選択してください';
   thirdWillUploadFIleName: string = 'ファイルを選択してください';
@@ -85,8 +84,8 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage2: any = null;
   saveCoverImage3: any = null;
 
+  isPosting: boolean;
 
-  // tslint:disable-next-line: max-line-length
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -172,6 +171,7 @@ export class ProductPostComponent implements OnInit {
    * @param postForm postする情報
    */
   post(postForm) {
+    this.isPosting = true;
     // 保存する際は画像はBase64にエンコードされるので詰め替える
     const forms: Products = postForm.value;
     forms.coverImage1 = this.saveCoverImage1;
@@ -185,6 +185,8 @@ export class ProductPostComponent implements OnInit {
         this.errors = err.error.error;
       }
     );
+    this.isPosting = false;
+
   }
 
   /*

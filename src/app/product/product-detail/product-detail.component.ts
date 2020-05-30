@@ -82,6 +82,8 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   /* localStrageに保存しているトークン */
   tokenData: string = localStorage.getItem('app-meta');
 
+  isPosting: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -125,6 +127,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     const forms: Products = updateData.value;
     forms.createDate = new Date();
     if (this.isDisabled) {
+      this.isPosting = true;
       console.log(updateData);
       this.productService.updateOne(updateData.value).subscribe(
         (data) => {
