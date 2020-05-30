@@ -21,7 +21,10 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (data) => {
         this.products = data;
-        this.isPosting = false;
+        setTimeout(() => {
+          this.isPosting = false;
+        }, 999999);
+
       },
       (err) => console.log(err),
     );
