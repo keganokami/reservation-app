@@ -1,9 +1,8 @@
 .posting-spiner {
   background: #5a5a5a;
   opacity: 0.5;
-  position: -webkit-sticky;
-  position: absolute;
-  height: calc(100% + 19rem);
+  position: fixed;
+  height: calc(100% + 220vw);
   width: 100%;
   top: 0;
   z-index: 9999;
@@ -12,11 +11,11 @@
 }
 
 .spinner-grow {
-  position: sticky;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 99;
+  z-index: 9999;
 
   .sr-only {
     position: relative;
@@ -24,6 +23,12 @@
     margin-top: 0rem;
     color: rgb(244, 255, 255);
     font-size: 18px;
+    &::after {
+      content: '一覧の取得中...';
+      position: absolute;
+      top: 32px;
+      right: -29px;
+    }
   }
 }
 

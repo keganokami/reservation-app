@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProductService, Products } from '../shared/product.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { products } from 'src/app/products';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
@@ -87,6 +88,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private router: Router,
   ) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.userId = dataObj.userId;
@@ -106,7 +108,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.selectedPrefecture = event;
   }
 
-  getData() {
+  async getData() {
     this.route.paramMap.subscribe(params => {
       const productObservablue = this.productService.getProductById(params.get('productId'));
       productObservablue.subscribe((data) => {
@@ -137,5 +139,18 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       await this.getData();
       location.reload();
     }
+  }
+
+  removePost(product: Products) {
+    const id = product._id;
+    debugger
+    this.productService.removeOne(id).subscribe(
+      (result) => {
+        this.router.navigate(['/products']);
+      },
+      (err) => {
+
+      }
+    );
   }
 }

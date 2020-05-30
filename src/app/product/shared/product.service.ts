@@ -46,4 +46,8 @@ export class ProductService {
   updateOne(updateData: Products): Observable<any> {
     return this.http.put('/api/v1/products/update', updateData);
   }
+
+  removeOne(productId: string): Observable<any> {
+    return this.http.get('/api/v1/products/remove/' + productId);
+  }
 }

@@ -1,7 +1,7 @@
 <ng-container *ngIf="isPosting">
   <div class="posting-spiner"></div>
   <div class="spinner-grow text-primary" role="status">
-    <span class="sr-only">投稿中...</span>
+    <span class="sr-only"></span>
   </div>
 </ng-container>
 <div [ngClass]="product ? 'my-fade-in' : 'my-non-display'">
@@ -131,7 +131,8 @@
         </div>
         <ng-container *ngIf="isSameUser">
           <div class="my-refrect-btn-area">
-            <button class="btn bg-danger" type="submit">反映</button>
+            <button class="btn bg-danger" type="submit">更新</button>
+            <button class="btn bg-danger" (click)="removePost(product)" >削除</button>
           </div>
         </ng-container>
 
