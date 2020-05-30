@@ -3,6 +3,7 @@ const router = express.Router()
 const Product = require('../model/product')
 const controll = require('../contorollers/user')
 
+
 router.get('', (req, res) => {
   Product.find({}, null, {sort:{ createDate: -1}},
     (err, foundProducts) => {
@@ -20,6 +21,15 @@ router.get('/:productId', controll.authMiddleware, (req, res) => {
   })
 })
 
+router.post('/:remove', controll.authMiddleware, (req, res) => {
+  const id = req.body._id
+  Product.remove(id, (err) => {
+    if (err) {
+      return res.status(422).send({error: [{title: 'delete error', detail: 'Product not found!'}]})
+    }
+  })
+})
+
 
 router.post('/:posts', function(req, res) {
   const {
@@ -30,9 +40,6 @@ router.post('/:posts', function(req, res) {
     coverImage3,
     heading,
     prefecture,
-    // heading1,
-    // heading2,
-    // heading3,
     description1,
     description2,
     description3,
@@ -46,9 +53,7 @@ router.post('/:posts', function(req, res) {
   if (!coverImage1 || !coverImage2 || !coverImage3) {
     return res.status(422).send({ error: [{ title: 'heading error', detail: '画像は必須です' }]})
   }
-  // if (!heading1 || !heading2 || !heading3) {
-  //   return res.status(422).send({ error: [{ title: 'heading error', detail: 'タイトルは必須です' }]})
-  // }
+
   if (!description1 || !description2 || !description3) {
     return res.status(422).send({ error: [{ title: 'description error', detail: '説明文は必須です' }]})
   }
@@ -57,9 +62,6 @@ router.post('/:posts', function(req, res) {
     return res.status(422).send({ error: [{ title: 'heading error', detail: '場所の名前は50文字以内で入力してください' }]})
   }
 
-  // if (heading1.length >=23 || heading2.length >=23 || heading3.length >=23) {
-  //   return res.status(422).send({ error: [{ title: 'heading error', detail: 'タイトル22文字以内で入力してください' }]})
-  // }
   if (description1.length >=170 || description2.length >=170 || description3.length >=170) {
     return res.status(422).send({ error: [{ title: 'description error', detail: '入力されていない説明文があります' }]})
   }
@@ -72,9 +74,6 @@ router.post('/:posts', function(req, res) {
       coverImage3,
       heading,
       prefecture,
-      // heading1,
-      // heading2,
-      // heading3,
       description1,
       description2,
       description3,
@@ -94,9 +93,6 @@ router.put('/:update', function(req, res) {
   const {
     _id,
     heading,
-    // heading1,
-    // heading2,
-    // heading3,
     prefecture,
     description1,
     description2,
@@ -108,9 +104,6 @@ router.put('/:update', function(req, res) {
     {'_id': _id},
     { $set: {
       'heading':heading,
-      // 'heading1': heading1,
-      // 'heading2': heading2,
-      // 'heading3': heading3,
       'prefecture': prefecture,
       'description1': description1,
       'description2': description2,
