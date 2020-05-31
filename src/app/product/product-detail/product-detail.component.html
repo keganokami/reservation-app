@@ -131,8 +131,8 @@
         </div>
         <ng-container *ngIf="isSameUser">
           <div class="my-refrect-btn-area">
-            <button class="btn bg-danger" type="submit">更新</button>
-            <span class="btn bg-danger" (click)="removePost(product)" >削除</span>
+            <button class="btn btn-danger btn-round" type="submit">更新</button>
+            <button class="btn btn-outline-default btn-round my-delete-btn" (click)="onButtonClickRemovePost(product)" >削除</button>
           </div>
         </ng-container>
 
@@ -141,9 +141,11 @@
       </div><!-- /.container -->
     </form>
     <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-right"><a class="btn btn-link btn-primary" [routerLink]="['/products']">ホームへ</a></p>
-      <p>{{product.username}}&middot; {{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</p>
+    <footer class="container footer-container">
+      <div class="row footer-row">
+        <p class="float-right"><a class="btn btn-link btn-primary" [routerLink]="['/products']">ホームへ</a></p>
+        <p>{{product.username}}&middot; {{ product.createDate | date:"yyyy/MM/dd HH:mm" }}</p>
+      </div>
     </footer>
   </ng-container>
 </div>

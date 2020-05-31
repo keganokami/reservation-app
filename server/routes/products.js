@@ -21,12 +21,13 @@ router.get('/:productId', controll.authMiddleware, (req, res) => {
   })
 })
 
-router.post('/:remove', controll.authMiddleware, (req, res) => {
-  const id = req.body._id
-  Product.remove(id, (err) => {
+router.delete('/:remove/:productId', controll.authMiddleware, (req, res) => {
+  const id = req.params.productId
+  Product.deleteOne({'_id': id}, (err) => {
     if (err) {
       return res.status(422).send({error: [{title: 'delete error', detail: 'Product not found!'}]})
     }
+    return res.json(id)
   })
 })
 

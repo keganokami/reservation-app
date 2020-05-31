@@ -1,9 +1,7 @@
-import { Component, OnInit, EventEmitter, Output, OnChanges, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { ProductService, Products } from '../shared/product.service';
-import { FormGroup, FormControl } from '@angular/forms';
-import { NgForm } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Products, ProductService } from '../shared/product.service';
 import { products } from 'src/app/products';
 const SelectPrefectures = {
   states: [
@@ -141,9 +139,16 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     }
   }
 
+  onButtonClickRemovePost(product: Products) {
+    const isRemoveOk = window.confirm('本当に削除しますか？');
+    if (!isRemoveOk) {
+      return;
+    }
+    this.removePost(product);
+  }
+
   removePost(product: Products) {
     const id = product._id;
-    debugger
     this.productService.removeOne(id).subscribe(
       (result) => {
         this.router.navigate(['/products']);

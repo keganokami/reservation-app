@@ -28,27 +28,6 @@ const productSchema = new Schema({
     type: String,
     require: true,
   },
-  // heading1: {
-  //   type: String,
-  //   require: true,
-  //   max: [
-  //     20, 'タイトルは20文字までです'
-  //   ]
-  // },
-  // heading2: {
-  //   type: String,
-  //   require: true,
-  //   max: [
-  //     20, 'タイトルは20文字までです'
-  //   ]
-  // },
-  // heading3: {
-  //   type: String,
-  //   require: true,
-  //   max: [
-  //     20, 'タイトルは20文字までです'
-  //   ]
-  // },
   description1: {
     type: String,
     require: true,

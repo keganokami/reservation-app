@@ -15,7 +15,6 @@ textarea {
   text-align: center;
   button {
     width: 10rem;
-    margin: 0 auto;
   }
 }
 
@@ -49,20 +48,22 @@ textarea {
 }
 
 .posting-spiner {
-  background: rgb(90, 90, 90);
+  background: #5a5a5a;
   opacity: 0.5;
-  position: absolute;
-  height: 68rem;
+  position: fixed;
+  height: calc(100% + 220vw);
   width: 100%;
   top: 0;
-  z-index: 4;
+  z-index: 9999;
+  margin-top: -7rem;
+  padding-bottom: -7rem;
 }
 
 .spinner-grow {
-  position: sticky;
+  position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 99;
+  z-index: 9999;
 
   .sr-only {
     position: relative;
@@ -71,7 +72,7 @@ textarea {
     color: rgb(244, 255, 255);
     font-size: 18px;
     &::after {
-      content: '更新中...';
+      content: "一覧の取得中...";
       position: absolute;
       top: 32px;
       right: -29px;
@@ -82,4 +83,15 @@ textarea {
 .wrapper {
   position: relative;
   z-index: 3;
+}
+
+.my-delete-btn {
+  margin-left: 1rem;
+}
+
+.footer-container {
+  .footer-row {
+    font-size: 15px;
+    align-items: baseline;
+  }
 }
