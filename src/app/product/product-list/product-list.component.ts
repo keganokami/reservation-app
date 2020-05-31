@@ -34,7 +34,9 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   constructor(private productService: ProductService, private router: Router) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
-    this.userId = dataObj.userId;
+    if (dataObj !== null) {
+      this.userId = dataObj.userId;
+    }
   }
   ngOnChanges(): void {
     if (this.products) {
