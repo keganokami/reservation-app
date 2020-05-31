@@ -83,6 +83,8 @@ export class ProductDetailComponent implements OnInit, OnChanges {
 
   isPosting: boolean = false;
 
+  myUrl: string;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
@@ -90,6 +92,8 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   ) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.userId = dataObj.userId;
+    this.myUrl = location.href;
+    console.log(this.myUrl);
   }
 
   product: Products;
@@ -145,6 +149,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       return;
     }
     this.removePost(product);
+    this.router.navigate(['/products']);
   }
 
   removePost(product: Products) {
@@ -154,7 +159,6 @@ export class ProductDetailComponent implements OnInit, OnChanges {
         this.router.navigate(['/products']);
       },
       (err) => {
-
       }
     );
   }
