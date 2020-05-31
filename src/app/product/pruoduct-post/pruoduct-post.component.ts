@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService, Products } from '../shared/product.service';
-import { DecimalPipe, DatePipe, FormStyle } from '@angular/common';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { products } from 'src/app/products';
+import { Products, ProductService } from '../shared/product.service';
+declare function require(x: string): any;
+// const Compressor = require('Compressor');
+import Compressor from 'compressorjs';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
@@ -117,7 +117,14 @@ export class ProductPostComponent implements OnInit {
   }
 
   firstfileChange(element) {
-    const file = element.target.files[0];
+    let file = element.target.files[0];
+    const img = new Compressor(file, {
+      quality: 0.2,
+      convertSize: 10000,
+      success(result) {
+        file = result;
+      }
+    });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
@@ -134,7 +141,14 @@ export class ProductPostComponent implements OnInit {
     this.firstUploadedFiles = element.target.files;
   }
   secondFileChange(element) {
-    const file = element.target.files[0];
+    let file = element.target.files[0];
+    const img = new Compressor(file, {
+      quality: 0.2,
+      convertSize: 10000,
+      success(result) {
+        file = result;
+      }
+    });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
@@ -151,7 +165,14 @@ export class ProductPostComponent implements OnInit {
   }
 
   thirdFileChange(element) {
-    const file = element.target.files[0];
+    let file = element.target.files[0];
+    const img = new Compressor(file, {
+      quality: 0.2,
+      convertSize: 10000,
+      success(result) {
+        file = result;
+      }
+    });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
