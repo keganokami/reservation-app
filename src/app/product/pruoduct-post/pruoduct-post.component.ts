@@ -117,14 +117,14 @@ export class ProductPostComponent implements OnInit {
   }
 
   firstfileChange(element) {
-    let file = element.target.files[0];
-    const img = new Compressor(file, {
-      quality: 0.6,
-      convertSize: 10000,
-      success(result) {
-        file = result;
-      }
-    });
+    const file = element.target.files[0];
+    // const img = new Compressor(file, {
+    //   quality: 0.6,
+    //   convertSize: 10000,
+    //   success(result) {
+    //     file = result;
+    //   }
+    // });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
@@ -146,14 +146,14 @@ export class ProductPostComponent implements OnInit {
     this.firstUploadedFiles = element.target.files;
   }
   secondFileChange(element) {
-    let file = element.target.files[0];
-    const img = new Compressor(file, {
-      quality: 0.6,
-      convertSize: 10000,
-      success(result) {
-        file = result;
-      }
-    });
+    const file = element.target.files[0];
+    // const img = new Compressor(file, {
+    //   quality: 0.6,
+    //   convertSize: 10000,
+    //   success(result) {
+    //     file = result;
+    //   }
+    // });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
@@ -175,14 +175,14 @@ export class ProductPostComponent implements OnInit {
   }
 
   thirdFileChange(element) {
-    let file = element.target.files[0];
-    const img = new Compressor(file, {
-      quality: 0.6,
-      convertSize: 10000,
-      success(result) {
-        file = result;
-      }
-    });
+    const file = element.target.files[0];
+    // const img = new Compressor(file, {
+    //   quality: 0.6,
+    //   convertSize: 10000,
+    //   success(result) {
+    //     file = result;
+    //   }
+    // });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
