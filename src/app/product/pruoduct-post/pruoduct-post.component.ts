@@ -119,7 +119,7 @@ export class ProductPostComponent implements OnInit {
   firstfileChange(element) {
     let file = element.target.files[0];
     const img = new Compressor(file, {
-      quality: 0.2,
+      quality: 0.6,
       convertSize: 10000,
       success(result) {
         file = result;
@@ -133,6 +133,11 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
+    if (file.size >= 1000000) {
+      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
+      this.firstUploadedFiles = null;
+      return;
+    }
     // アップロードするファイルの名前を表示する
     reader.onload = () => {
       this.saveCoverImage1 = reader.result;
@@ -143,7 +148,7 @@ export class ProductPostComponent implements OnInit {
   secondFileChange(element) {
     let file = element.target.files[0];
     const img = new Compressor(file, {
-      quality: 0.2,
+      quality: 0.6,
       convertSize: 10000,
       success(result) {
         file = result;
@@ -157,6 +162,11 @@ export class ProductPostComponent implements OnInit {
       this.secondUploadedFiles = null;
       return;
     }
+    if (file.size >= 1000000) {
+      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
+      this.firstUploadedFiles = null;
+      return;
+    }
     reader.onload = () => {
       this.saveCoverImage2 = reader.result;
     };
@@ -167,7 +177,7 @@ export class ProductPostComponent implements OnInit {
   thirdFileChange(element) {
     let file = element.target.files[0];
     const img = new Compressor(file, {
-      quality: 0.2,
+      quality: 0.6,
       convertSize: 10000,
       success(result) {
         file = result;
@@ -179,6 +189,11 @@ export class ProductPostComponent implements OnInit {
     if (!this.check_extension(this.get_extension(fileName))) {
       this.thirdWillUploadFIleName = '拡張子が不正です';
       this.thirdUploadedFiles = null;
+      return;
+    }
+    if (file.size >= 1000000) {
+      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
+      this.firstUploadedFiles = null;
       return;
     }
     reader.onload = () => {
