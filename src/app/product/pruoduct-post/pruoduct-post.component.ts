@@ -6,7 +6,6 @@ import * as loadImage from 'blueimp-load-image';
 declare function require(x: string): any;
 // const Compressor = require('Compressor');
 import Compressor from 'compressorjs';
-import { truncate } from 'fs';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
