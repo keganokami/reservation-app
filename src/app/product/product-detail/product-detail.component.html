@@ -50,8 +50,8 @@
               <div class="col-md-4">
                 <div class="info">
                   <div class="card my-card">
-                    <!-- <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt=""> -->
-                    <canvas id="cvs1" width="300" height="300" class="my-img-size card-img-top"></canvas>
+                    <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt="">
+                    <!-- <canvas id="cvs1" width="300" height="300" class="my-img-size card-img-top"></canvas> -->
                     <div class="card-body my-card">
                       <ng-container *ngIf="isSameUser ; else disabled1">
                         <textarea [(ngModel)]="product.description1" class="form-control"
