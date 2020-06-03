@@ -155,9 +155,10 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    reader.onload = () => {
-      this.saveCoverImage1 = DataURL;
-    };
+    this.saveCoverImage1 = DataURL;
+    // reader.onload = () => {
+
+    // };
     this.firstWillUploadFIleName = fileName;
     this.firstUploadedFiles = element.target.files;
   }
