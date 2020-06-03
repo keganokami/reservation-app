@@ -117,7 +117,7 @@ export class ProductPostComponent implements OnInit {
     this.secondUploadedFiles = null;
   }
 
-  getDataUrl(blobImage: Blob, options: any): Promise<any> {
+  getDataUrl(blobImage: Blob, options: Object): Promise<any> {
     return new Promise((resolve) => {
       loadImage(blobImage, (canvas) => {
         resolve(canvas.toDataURL(blobImage.type));
@@ -126,24 +126,7 @@ export class ProductPostComponent implements OnInit {
   }
 
   firstfileChange(element) {
-    debugger
     const file = element.target.files[0];
-    let DataURL;
-    loadImage.parseMetaData(file, (data) => {
-      const options = {
-        orientation: null,
-        canvas: true
-      };
-      if (data.exif) {
-        options.orientation = data.exif.get('Orientation');
-      }
-      this.getDataUrl(file, options)
-        .then(result => {
-          DataURL = result;
-        });
-    });
-    const reader = new FileReader();
-    // reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {
       this.firstWillUploadFIleName = '拡張子が不正です';
@@ -155,10 +138,20 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    this.saveCoverImage1 = DataURL;
-    // reader.onload = () => {
-
-    // };
+    loadImage.parseMetaData(file, (data) => {
+      const options = {
+        orientation: null,
+        canvas: true
+      };
+      if (data.exif) {
+        options.orientation = data.exif.get('Orientation');
+      }
+      this.getDataUrl(file, options)
+        .then(result => {
+          this.saveCoverImage1 = result;
+          console.log(result);
+        });
+    });
     this.firstWillUploadFIleName = fileName;
     this.firstUploadedFiles = element.target.files;
   }
@@ -212,6 +205,7 @@ export class ProductPostComponent implements OnInit {
    */
   post(postForm) {
     // 保存する際は画像はBase64にエンコードされるので詰め替える
+    debugger
     const forms: Products = postForm.value;
     forms.coverImage1 = this.saveCoverImage1;
     forms.coverImage2 = this.saveCoverImage2;
