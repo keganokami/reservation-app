@@ -2,9 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
+import * as loadImage from 'blueimp-load-image';
 declare function require(x: string): any;
 // const Compressor = require('Compressor');
 import Compressor from 'compressorjs';
+import { truncate } from 'fs';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
@@ -116,17 +118,33 @@ export class ProductPostComponent implements OnInit {
     this.secondUploadedFiles = null;
   }
 
+  getDataUrl(blobImage: Blob, options: any): Promise<any> {
+    return new Promise((resolve) => {
+      loadImage(blobImage, (canvas) => {
+        resolve(canvas.toDataURL(blobImage.type));
+      }, options);
+    });
+  }
+
   firstfileChange(element) {
+    debugger
     const file = element.target.files[0];
-    // const img = new Compressor(file, {
-    //   quality: 0.6,
-    //   convertSize: 10000,
-    //   success(result) {
-    //     file = result;
-    //   }
-    // });
+    let DataURL;
+    loadImage.parseMetaData(file, (data) => {
+      const options = {
+        orientation: null,
+        canvas: true
+      };
+      if (data.exif) {
+        options.orientation = data.exif.get('Orientation');
+      }
+      this.getDataUrl(file, options)
+        .then(result => {
+          DataURL = result;
+        });
+    });
     const reader = new FileReader();
-    reader.readAsDataURL(file);
+    // reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {
       this.firstWillUploadFIleName = '拡張子が不正です';
@@ -138,22 +156,14 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    // アップロードするファイルの名前を表示する
     reader.onload = () => {
-      this.saveCoverImage1 = reader.result;
+      this.saveCoverImage1 = DataURL;
     };
     this.firstWillUploadFIleName = fileName;
     this.firstUploadedFiles = element.target.files;
   }
   secondFileChange(element) {
     const file = element.target.files[0];
-    // const img = new Compressor(file, {
-    //   quality: 0.6,
-    //   convertSize: 10000,
-    //   success(result) {
-    //     file = result;
-    //   }
-    // });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
@@ -176,13 +186,6 @@ export class ProductPostComponent implements OnInit {
 
   thirdFileChange(element) {
     const file = element.target.files[0];
-    // const img = new Compressor(file, {
-    //   quality: 0.6,
-    //   convertSize: 10000,
-    //   success(result) {
-    //     file = result;
-    //   }
-    // });
     const reader = new FileReader();
     reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;

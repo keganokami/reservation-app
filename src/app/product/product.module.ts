@@ -8,7 +8,6 @@ import { AuthGuard } from '../auth/shared/auth.guard';
 import { FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 
-
 const routes: Routes = [
   {
     path: 'products', component: ProductComponent,
