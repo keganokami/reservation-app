@@ -50,19 +50,9 @@
               <div class="col-md-4">
                 <div class="info">
                   <div class="card my-card">
-                    <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt="">
+                    <!-- <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt=""> -->
+                    <canvas id="cvs1" width="300" height="300" class="my-img-size card-img-top"></canvas>
                     <div class="card-body my-card">
-                      <!-- heading -->
-                      <!-- <h5 class="card-title">
-                        <ng-container *ngIf="isSameUser; else notEditableUser1">
-                          <input [(ngModel)]="product.heading1" type="text" name="heading1" class="form-control"
-                            placeholder="タイトル">
-                        </ng-container>
-                        <ng-template #notEditableUser1>
-                          <p>{{ product.heading1 }}</p>
-                        </ng-template>
-                      </h5> -->
-                      <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled1">
                         <textarea [(ngModel)]="product.description1" class="form-control"
                           name="description1">{{ product.description1 }}</textarea>
@@ -77,17 +67,9 @@
               <div class="col-md-4">
                 <div class="info">
                   <div class="card my-card">
-                    <img class="my-img-size card-img-top" src="{{ product.coverImage2 }}" alt="">
+                    <!-- <img class="my-img-size card-img-top" src="{{ product.coverImage2 }}" alt=""> -->
+                    <canvas id="cvs2" width="300" height="300" class="my-img-size card-img-top"></canvas>
                     <div class="card-body my-card">
-                      <!-- <h5 class="card-title">
-                        <ng-container *ngIf="isSameUser; else notEditableUser2">
-                          <input [(ngModel)]="product.heading2" type="text" name="heading2" class="form-control"
-                            placeholder="タイトル">
-                        </ng-container>
-                        <ng-template #notEditableUser2>
-                          <p>{{ product.heading2 }}</p>
-                        </ng-template>
-                      </h5> -->
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled2">
                         <textarea [(ngModel)]="product.description2" class="form-control"
@@ -103,17 +85,9 @@
               <div class="col-md-4">
                 <div class="info">
                   <div class="card my-card">
-                    <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt="">
+                    <!-- <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt=""> -->
+                    <canvas id="cvs3" width="300" height="300" class="my-img-size card-img-top"></canvas>
                     <div class="card-body my-card">
-                      <!-- <h5 class="card-title">
-                        <ng-container *ngIf="isSameUser; else notEditableUser3">
-                          <input [(ngModel)]="product.heading3" type="text" name="heading3" class="form-control"
-                            placeholder="タイトル">
-                        </ng-container>
-                        <ng-template #notEditableUser3>
-                          <p>{{ product.heading3 }}</p>
-                        </ng-template>
-                      </h5> -->
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled3">
                         <textarea [(ngModel)]="product.description3" class="form-control"
