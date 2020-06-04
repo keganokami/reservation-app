@@ -3,9 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
 import * as loadImage from 'blueimp-load-image';
-declare function require(x: string): any;
-// const Compressor = require('Compressor');
-import Compressor from 'compressorjs';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
@@ -133,7 +130,6 @@ export class ProductPostComponent implements OnInit {
   }
 
   firstfileChange(element) {
-    debugger
     const file = element.target.files[0];
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {

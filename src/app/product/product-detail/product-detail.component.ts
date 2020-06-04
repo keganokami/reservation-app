@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, DoCheck, AfterContentChecked, AfterViewChecked, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
-import { products } from 'src/app/products';
 const SelectPrefectures = {
   states: [
     { value: '01', viewValue: '北海道' },
@@ -148,7 +147,6 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   }
 
   onButtonClickRemovePost(product: Products) {
-    this.ngAfterViewInit();
     const isRemoveOk = window.confirm('本当に削除しますか？');
     if (!isRemoveOk) {
       return;
