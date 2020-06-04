@@ -57,6 +57,8 @@ const SelectPrefectures = {
     { value: '47', viewValue: '沖縄県' }
   ]
 };
+
+
 interface Tokens {
   username: string;
   userId: string;
@@ -86,7 +88,12 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage2: any = null;
   saveCoverImage3: any = null;
 
-
+  options = {
+    maxHeight: 800,
+    maxWidth: 800,
+    orientation: null,
+    canvas: true
+  };
 
   constructor(
     private productService: ProductService,
@@ -134,36 +141,29 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    // if (file.size >= 1000000) {
-    //   this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
-    //   this.firstUploadedFiles = null;
-    //   return;
-    // }
-    loadImage.parseMetaData(file, (data) => {
-      const options = {
-        maxHeight: 300,
-        maxWidth: 300,
-        orientation: null,
-        canvas: true
+    if (file.size >= 100) {
+      loadImage.parseMetaData(file, (data) => {
+        console.log(file);
+        this.getDataUrl(file, this.options)
+          .then(result => {
+            this.saveCoverImage1 = result;
+            console.log(result);
+          });
+      });
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.saveCoverImage1 = reader.result;
       };
-      if (data.exif) {
-        options.orientation = data.exif.get('Orientation');
-        console.log(options.orientation);
-      }
-      console.log(file);
-      this.getDataUrl(file, options)
-        .then(result => {
-          this.saveCoverImage1 = result;
-          console.log(result);
-        });
-    });
+    }
+
     this.firstWillUploadFIleName = fileName;
     this.firstUploadedFiles = element.target.files;
   }
+
   secondFileChange(element) {
     const file = element.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {
       this.secondWillUploadFIleName = '拡張子が不正です';
@@ -171,21 +171,27 @@ export class ProductPostComponent implements OnInit {
       return;
     }
     if (file.size >= 1000000) {
-      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
-      this.firstUploadedFiles = null;
-      return;
+      loadImage.parseMetaData(file, (data) => {
+        console.log(file);
+        this.getDataUrl(file, this.options)
+          .then(result => {
+            this.saveCoverImage2 = result;
+            console.log(result);
+          });
+      });
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.saveCoverImage2 = reader.result;
+      };
     }
-    reader.onload = () => {
-      this.saveCoverImage2 = reader.result;
-    };
     this.secondWillUploadFIleName = fileName;
     this.secondUploadedFiles = element.target.files;
   }
 
   thirdFileChange(element) {
     const file = element.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {
       this.thirdWillUploadFIleName = '拡張子が不正です';
@@ -193,13 +199,22 @@ export class ProductPostComponent implements OnInit {
       return;
     }
     if (file.size >= 1000000) {
-      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
-      this.firstUploadedFiles = null;
-      return;
+      loadImage.parseMetaData(file, (data) => {
+        console.log(file);
+        this.getDataUrl(file, this.options)
+          .then(result => {
+            this.saveCoverImage3 = result;
+            console.log(result);
+          });
+      });
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.saveCoverImage3 = reader.result;
+      };
     }
-    reader.onload = () => {
-      this.saveCoverImage3 = reader.result;
-    };
+
     this.thirdWillUploadFIleName = fileName;
     this.thirdUploadedFiles = element.target.files;
   }

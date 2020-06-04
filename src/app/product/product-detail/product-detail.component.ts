@@ -64,7 +64,7 @@ interface Tokens {
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit, OnChanges, AfterViewInit {
+export class ProductDetailComponent implements OnInit, OnChanges {
   @Output() titleChanged: EventEmitter<string> = new EventEmitter<string>();
   textareaForm = new FormGroup({
     address: new FormControl()
@@ -108,16 +108,6 @@ export class ProductDetailComponent implements OnInit, OnChanges, AfterViewInit 
 
   ngOnInit() {
     this.getData();
-  }
-
-  // canvasに描画するためDOMを検知した後に呼び出す。
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.createCanvas1(this.product);
-      this.createCanvas2(this.product);
-      this.createCanvas3(this.product);
-    }, 1000);
-
   }
 
   getSelectedPref(event: any) {
@@ -177,47 +167,5 @@ export class ProductDetailComponent implements OnInit, OnChanges, AfterViewInit 
       (err) => {
       }
     );
-  }
-
-  createCanvas1(data: Products) {
-    this.coverImage1 = data.coverImage1;
-
-    const cvs1 = document.getElementById('cvs1') as HTMLCanvasElement;
-    const ctx1 = cvs1.getContext('2d');
-
-    const img1 = new Image();
-    img1.src = this.coverImage1;
-
-    img1.onload = () => {
-      ctx1.drawImage(img1, 0, 0, 300, 300);
-    };
-  }
-
-  createCanvas2(data: Products) {
-    this.coverImage2 = data.coverImage2;
-
-    const cvs2 = document.getElementById('cvs2') as HTMLCanvasElement;
-    const ctx2 = cvs2.getContext('2d');
-
-    const img2 = new Image();
-    img2.src = this.coverImage2;
-
-    img2.onload = () => {
-      ctx2.drawImage(img2, 0, 0, 300, 300);
-    };
-  }
-
-  createCanvas3(data: Products) {
-    this.coverImage3 = data.coverImage3;
-
-    const cvs3 = document.getElementById('cvs3') as HTMLCanvasElement;
-    const ctx3 = cvs3.getContext('2d');
-
-    const img3 = new Image();
-    img3.src = this.coverImage3;
-
-    img3.onload = () => {
-      ctx3.drawImage(img3, 0, 0, 300, 300);
-    };
   }
 }
