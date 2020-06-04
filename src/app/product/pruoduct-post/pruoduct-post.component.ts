@@ -86,8 +86,8 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage3: any = null;
 
   options = {
-    maxHeight: 1024,
-    maxWidth: 1024,
+    maxHeight: 1000,
+    maxWidth: 1000,
     orientation: null,
     canvas: true
   };
@@ -137,7 +137,7 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    if (file.size >= 100) {
+    if (file.size >= 1000000) {
       loadImage.parseMetaData(file, (data) => {
         console.log(file);
         this.getDataUrl(file, this.options)
