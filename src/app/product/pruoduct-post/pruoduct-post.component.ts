@@ -126,6 +126,7 @@ export class ProductPostComponent implements OnInit {
   }
 
   firstfileChange(element) {
+    debugger
     const file = element.target.files[0];
     const fileName: string = element.target.files[0].name;
     if (!this.check_extension(this.get_extension(fileName))) {
@@ -133,19 +134,23 @@ export class ProductPostComponent implements OnInit {
       this.firstUploadedFiles = null;
       return;
     }
-    if (file.size >= 1000000) {
-      this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
-      this.firstUploadedFiles = null;
-      return;
-    }
+    // if (file.size >= 1000000) {
+    //   this.firstWillUploadFIleName = 'ファイルサイズが大きすぎます';
+    //   this.firstUploadedFiles = null;
+    //   return;
+    // }
     loadImage.parseMetaData(file, (data) => {
       const options = {
+        maxHeight: 300,
+        maxWidth: 300,
         orientation: null,
         canvas: true
       };
       if (data.exif) {
         options.orientation = data.exif.get('Orientation');
+        console.log(options.orientation);
       }
+      console.log(file);
       this.getDataUrl(file, options)
         .then(result => {
           this.saveCoverImage1 = result;
@@ -205,7 +210,6 @@ export class ProductPostComponent implements OnInit {
    */
   post(postForm) {
     // 保存する際は画像はBase64にエンコードされるので詰め替える
-    debugger
     const forms: Products = postForm.value;
     forms.coverImage1 = this.saveCoverImage1;
     forms.coverImage2 = this.saveCoverImage2;
