@@ -24,7 +24,6 @@
               <div class="form-group col-md-4">
                 <label for="inputState">都道府県</label>
                 <select ngModel id="inputState" name="prefecture" class="form-control">
-                  <option selected>選択...</option>
                   <option id="update-state" *ngFor="let state of prefectures.states" [value]="state.value">
                     {{state.viewValue}}</option>
                 </select>
