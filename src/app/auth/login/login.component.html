@@ -1,67 +1,61 @@
-<div class="wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-          <div class="card card-register">
-            <h3 class="title">ログイン</h3>
-            <p>投稿や閲覧をするには<br/>会員登録またはログインが必要です</p>
-            <!-- <div class="social-line text-center">
-              <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
-                <i class="fa fa-facebook-square"></i>
-              </a>
-              <a href="#pablo" class="btn btn-neutral btn-google btn-just-icon">
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a href="#pablo" class="btn btn-neutral btn-twitter btn-just-icon">
-                <i class="fa fa-twitter"></i>
-              </a>
-            </div> -->
-            <form class="register-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-              <label>メールアドレス</label>
-              <div class="input-group form-group-no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="nc-icon nc-email-85"></i>
-                  </span>
-                </div>
-
-                <input
-                  ngModel
-                  name="email"
-                  type="email"
-                  class="form-control"
-                  placeholder="メールアドレス"
-                  required
-                  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-                >
+<!-- <div>
+  <img class="my-login-header-image" src="./assets/img/top_image.jpg" alt="">
+</div> -->
+<div class="wrapper my-login-header-image">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+        <div class="card-register">
+          <h3 class="title">ログイン</h3>
+          <p>投稿や閲覧をするには<br />会員登録またはログインが必要です</p>
+          <form class="register-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <label>メールアドレス</label>
+            <div class="input-group form-group-no-border">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-email-85"></i>
+                </span>
               </div>
 
-              <label>パスワード</label>
-              <div class="input-group form-group-no-border">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="nc-icon nc-key-25"></i>
-                  </span>
-                </div>
-                <input
-                  ngModel
-                  type="password"
-                  name="password"
-                  class="form-control"
-                  placeholder="パスワード"
-                  required
-                >
+              <input ngModel name="email" type="email" class="form-control" placeholder="メールアドレス" required
+                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+            </div>
+
+            <label>パスワード</label>
+            <div class="input-group form-group-no-border">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="nc-icon nc-key-25"></i>
+                </span>
               </div>
-              <button [disabled]="!loginForm.valid" class="btn btn-danger btn-block btn-round" type="submit">ログイン</button>
-            </form>
-            <div *ngIf="errors && errors.length>0" class="alert alert-danger" style="margin-top: 1rem;">
-              <p *ngFor="let error of errors">{{ error.detail}}</p>
+              <input ngModel type="password" name="password" class="form-control" placeholder="パスワード" required>
             </div>
-            <div class="forgot">
-              <a href="#" class="btn btn-link btn-danger">パスワードを忘れた方</a>
-            </div>
+            <button [disabled]="!loginForm.valid" class="btn btn-danger btn-block btn-round" type="submit">ログイン</button>
+          </form>
+          <div *ngIf="errors && errors.length>0" class="alert alert-danger" style="margin-top: 1rem;">
+            <p *ngFor="let error of errors">{{ error.detail}}</p>
           </div>
+          <!-- <div class="forgot">
+              <a href="#" class="btn btn-link btn-danger">パスワードを忘れた方</a>
+             </div> -->
         </div>
       </div>
     </div>
+  </div>
 </div>
+<main>
+  <div class="container">
+    <div class="about">
+      <h2>about</h2>
+      <div class="about-discription">
+        <p>
+          &nbsp;&nbsp;みんなの練習場」は皆さんが普段トレーニングをしたりリフレッシュをしたりする公園などを紹介するサイトです。
+        </p>
+        <p>
+          &nbsp;&nbsp;例えば「こんな坂道をダッシュしてます。この坂道はとてもトレーニングになります。」や、「この公園で懸垂してます。いろんな器具があり
+          運動不足を解消しています。」など皆さんが行きつけの場所を紹介し、どんなトレーニングをしているかを投稿することで見る人に刺激を与えることができます。皆でトレーニングのモチベーションをアップしましょう！
+        </p>
+      </div>
+    </div>
+  </div>
+</main>

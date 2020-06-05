@@ -1,7 +1,8 @@
 .card{
     border-radius: $border-radius-extreme;
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
-    background-color: #FFFFFF;
+    // background-color: #FFFFFF;
+    background-color: transparent;
     color: $card-black-color;
     margin-bottom: 20px;
     position: relative;
@@ -127,12 +128,12 @@
 }
 
 .card-register {
-  background-color: #FF8F5E;
+  // background-color: #FF8F5E;
   border-radius: 8px;
   color: #fff;
   max-width: 350px;
   margin: 110px 0 70px;
-  min-height: 400px;
+  min-height: 430px;
   padding: 15px;
   z-index: 1;
 
@@ -152,7 +153,8 @@
   margin-top: 15px; }
 
 .card-register .title {
-  color: #B33C12;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
   text-align: center; }
 
 .card-register .btn {
