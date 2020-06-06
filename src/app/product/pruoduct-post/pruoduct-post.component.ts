@@ -38,8 +38,8 @@ export class ProductPostComponent implements OnInit {
   posting:boolean = false;
 
   options = {
-    maxHeight: 1200,
-    maxWidth: 1200,
+    maxHeight: 1080,
+    maxWidth: 1080,
     orientation: null,
     canvas: true
   };
