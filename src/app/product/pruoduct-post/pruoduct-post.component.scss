@@ -75,3 +75,41 @@ label.custom-file-label {
 .intro3 {
   @include title-style(rgb(55, 55, 247));
 }
+
+.posting-spiner {
+  background: #5a5a5a;
+  opacity: 0.5;
+  position: fixed;
+  height: calc(100% + 220vw);
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  margin-top: -7rem;
+  padding-bottom: -7rem;
+}
+
+.spinner-grow {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+
+  .sr-only {
+    position: relative;
+    margin-left: 2.5rem;
+    margin-top: 0rem;
+    color: rgb(244, 255, 255);
+    font-size: 18px;
+    &::after {
+      content: 'データを投稿中...';
+      position: absolute;
+      top: 32px;
+      right: -29px;
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+  z-index: 3;
+}

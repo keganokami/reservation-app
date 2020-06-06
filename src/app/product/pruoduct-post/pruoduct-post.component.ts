@@ -34,6 +34,9 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage2: any = null;
   saveCoverImage3: any = null;
 
+  isPosting: boolean = false;
+  posting:boolean = false;
+
   options = {
     maxHeight: 1200,
     maxWidth: 1200,
@@ -174,14 +177,18 @@ export class ProductPostComponent implements OnInit {
     forms.coverImage1 = this.saveCoverImage1;
     forms.coverImage2 = this.saveCoverImage2;
     forms.coverImage3 = this.saveCoverImage3;
+    this.isPosting = true;
     this.productService.post(postForm.value).subscribe(
       (result) => {
+        this.posting = false;
+        this.isPosting = false;
         this.router.navigate(['/products']);
       },
       (err: HttpErrorResponse) => {
         this.errors = err.error.error;
       }
     );
+
   }
 
   /*
@@ -198,5 +205,9 @@ export class ProductPostComponent implements OnInit {
   check_extension(ext: string): boolean {
     const allowExt = new Array('.jpg', '.jpeg', '.png');
     return allowExt.indexOf(ext.toLowerCase()) === -1 ? false : true;
+  }
+
+  checkPosting() {
+    this.posting = true;
   }
 }
