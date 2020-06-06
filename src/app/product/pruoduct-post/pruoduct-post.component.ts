@@ -35,8 +35,8 @@ export class ProductPostComponent implements OnInit {
   saveCoverImage3: any = null;
 
   options = {
-    maxHeight: 1000,
-    maxWidth: 1000,
+    maxHeight: 1200,
+    maxWidth: 1200,
     orientation: null,
     canvas: true
   };
