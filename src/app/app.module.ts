@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { DecimalPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 

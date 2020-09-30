@@ -36,6 +36,7 @@ router.post('/:posts', function(req, res) {
   const {
     username,
     userId,
+    postSize,
     coverImage1,
     coverImage2,
     coverImage3,
@@ -51,21 +52,42 @@ router.post('/:posts', function(req, res) {
     return res.status(422).send({ error: [{ title: 'heading error', detail: '場所の名前は必須です' }]})
   }
 
-  if (!coverImage1 || !coverImage2 || !coverImage3) {
-    return res.status(422).send({ error: [{ title: 'heading error', detail: '画像は必須です' }]})
-  }
-
-  if (!description1 || !description2 || !description3) {
-    return res.status(422).send({ error: [{ title: 'description error', detail: '説明文は必須です' }]})
+  if (postSize === 1) {
+    if (!coverImage1) {
+      return res.status(422).send({ error: [{ title: 'heading error', detail: '画像は必須です' }]})
+    }
+    if (!description1) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '説明文は必須です' }]})
+    }
+    if (description1.length >=170) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '入力されていない説明文があります' }]})
+    }
+  } else if (postSize === 2) {
+    if (!coverImage1 || !coverImage2) {
+      return res.status(422).send({ error: [{ title: 'heading error', detail: '画像は必須です' }]})
+    }
+    if (!description1 || !description2 ) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '説明文は必須です' }]})
+    }
+    if (description1.length >=170 || description2.length >=170) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '入力されていない説明文があります' }]})
+    }
+  } else {
+    if (!coverImage1 || !coverImage2 || !coverImage3) {
+      return res.status(422).send({ error: [{ title: 'heading error', detail: '画像は必須です' }]})
+    }
+    if (!description1 || !description2 || !description3) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '説明文は必須です' }]})
+    }
+    if (description1.length >=170 || description2.length >=170 || description3.length >=170) {
+      return res.status(422).send({ error: [{ title: 'description error', detail: '入力されていない説明文があります' }]})
+    }
   }
 
   if (heading.length >= 50) {
     return res.status(422).send({ error: [{ title: 'heading error', detail: '場所の名前は50文字以内で入力してください' }]})
   }
 
-  if (description1.length >=170 || description2.length >=170 || description3.length >=170) {
-    return res.status(422).send({ error: [{ title: 'description error', detail: '入力されていない説明文があります' }]})
-  }
   const posts = new Product(
     {
       username,

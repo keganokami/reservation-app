@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
   username: String, // localStrageから取得して送る
+  postSize: Number,
   userId: String,　// localStrageから取得して送る
   coverImage1: {
     type: String,
@@ -11,11 +12,9 @@ const productSchema = new Schema({
   },
   coverImage2: {
     type: String,
-    require: true,
   },
   coverImage3: {
     type: String,
-    require: true,
   },
   heading: {
     type: String,
@@ -37,14 +36,12 @@ const productSchema = new Schema({
   },
   description2: {
     type: String,
-    require: true,
     max: [
       20, '説明文は170文字までです'
     ]
   },
   description3: {
     type: String,
-    require: true,
     max: [
       20, '説明文は170文字までです'
     ]

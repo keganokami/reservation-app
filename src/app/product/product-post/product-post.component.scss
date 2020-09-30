@@ -29,13 +29,12 @@
 
 label.custom-file-label {
   margin: 0;
+  height: 30px;
 }
 .custom-file-input:lang(en) ~ .custom-file-label::after {
   content: "Upload";
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  height: 38px;
-  padding: 0.55rem 0.75rem;
+  height: 40px;
+  padding: 0.55rem 0.55rem;
 }
 
 .custom-file {
@@ -55,8 +54,13 @@ label.custom-file-label {
   margin-top: 4px;
 }
 
+.custom-file-label::after {
+  height: 38px;
+  line-height: 1.8;
+}
+
 .input-group > .custom-file:not(:first-child) .custom-file-label {
-  border-radius: 8px;
+  // border-radius: 8px;
   height: 40px;
 }
 

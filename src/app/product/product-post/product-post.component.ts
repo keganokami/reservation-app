@@ -1,9 +1,13 @@
+import { element } from 'protractor';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
 import * as loadImage from 'blueimp-load-image';
 import { SelectPrefectures } from 'src/app/util/prefectures';
+import { FormArray, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 interface Tokens {
   username: string;
@@ -12,10 +16,12 @@ interface Tokens {
 
 @Component({
   selector: 'app-product-post',
-  templateUrl: './pruoduct-post.component.html',
-  styleUrls: ['./pruoduct-post.component.scss']
+  templateUrl: './product-post.component.html',
+  styleUrls: ['./product-post.component.scss']
 })
 export class ProductPostComponent implements OnInit {
+  form: FormGroup;
+  
   errors: any;
   tokenData: string = localStorage.getItem('app-meta');
   username: string;
@@ -47,6 +53,7 @@ export class ProductPostComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
+    private fb: FormBuilder
   ) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.username = dataObj.username;
@@ -55,6 +62,8 @@ export class ProductPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.form = this.createForm();
+    this.addPostForm();
   }
 
   // input=fileの書き戻し
@@ -79,6 +88,20 @@ export class ProductPostComponent implements OnInit {
         resolve(canvas.toDataURL(blobImage.type));
       }, options);
     });
+  }
+
+  fileChange(index: number, element) {
+    if (index === 0) {
+      this.firstfileChange(element);
+      const label = document.getElementById('inputGroupFileText0' + index);
+      label.innerText = this.firstWillUploadFIleName;
+    } else if (index === 1) {
+      this.secondFileChange(element);
+      const label = document.getElementById('inputGroupFileText0' + index);
+      label.innerText = this.secondWillUploadFIleName;
+    } else {
+      this.thirdFileChange(element);
+    }
   }
 
   firstfileChange(element) {
@@ -174,9 +197,17 @@ export class ProductPostComponent implements OnInit {
   post(postForm) {
     // 保存する際は画像はBase64にエンコードされるので詰め替える
     const forms: Products = postForm.value;
+    forms.postSize = this.postFroms.length;
     forms.coverImage1 = this.saveCoverImage1;
     forms.coverImage2 = this.saveCoverImage2;
     forms.coverImage3 = this.saveCoverImage3;
+    forms.description1 = (document.getElementById('description0') as HTMLTextAreaElement).value;
+    if (document.getElementById('description1') !== null) {
+      forms.description2 = (document.getElementById('description1') as HTMLTextAreaElement).value;
+    }
+    if (document.getElementById('description2') !== null) {
+      forms.description3 = (document.getElementById('description2') as HTMLTextAreaElement).value;
+    }
     this.isPosting = true;
     this.productService.post(postForm.value).subscribe(
       (result) => {
@@ -185,10 +216,10 @@ export class ProductPostComponent implements OnInit {
         this.router.navigate(['/products']);
       },
       (err: HttpErrorResponse) => {
+        this.isPosting = false;
         this.errors = err.error.error;
       }
     );
-
   }
 
   /*
@@ -207,7 +238,44 @@ export class ProductPostComponent implements OnInit {
     return allowExt.indexOf(ext.toLowerCase()) === -1 ? false : true;
   }
 
-  checkPosting() {
-    this.posting = true;
+  // フォーム複製
+  createForm(): FormGroup {
+    return this.fb.group({
+      username: [''],
+      userId: [''],
+      createDate: [''],
+      heading: [''],
+      prefecture: [''],
+      postFroms: this.fb.array([])
+    })
+  }
+
+  createPostFormGroup(): FormGroup {
+    return this.fb.group({
+      coverImage: new FormControl(
+        '',
+        [
+          Validators.required
+        ]
+      ),
+      description: new FormControl(
+        '',
+        [
+          Validators.required
+        ]
+      ),
+    })
+  }
+
+  get postFroms(): FormArray {
+    return this.form.get('postFroms') as FormArray
+  }
+
+  addPostForm() {
+    this.postFroms.push(this.createPostFormGroup())
+  }
+
+  removePostFormGroup(index: number) {
+    this.postFroms.removeAt(index)
   }
 }

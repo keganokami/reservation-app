@@ -7,6 +7,7 @@ import { ProductComponent } from './product.component';
 import { AuthGuard } from '../auth/shared/auth.guard';
 import { FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -23,13 +24,12 @@ const routes: Routes = [
      ProductComponent,
      ProductDetailComponent,
      ProductListComponent,
-
    ],
    imports: [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
-    MatSliderModule
+    MatSliderModule,
    ],
    providers: [ DatePipe ],
    bootstrap: []

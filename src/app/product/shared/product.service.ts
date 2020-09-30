@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 export interface Products {
   _id: string; // mongoDBのオブジェクトID
+  postSize: number; // 1～3
   username?: string; // localStrageから取得して送る
   userId?: string; 　// localStrageから取得して送る
   postId: string;
@@ -13,8 +14,8 @@ export interface Products {
   coverImage2: string;
   coverImage3: string;
   description1: string;
-  description2?: string;
-  description3?: string;
+  description2: string;
+  description3: string;
   createDate?: Date;
 }
 
