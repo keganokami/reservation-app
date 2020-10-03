@@ -1,0 +1,88 @@
+<ng-container *ngIf="isPosting">
+  <div class="posting-spiner"></div>
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only"></span>
+  </div>
+</ng-container>
+<div class="wrapper">
+  <div class="section landing-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mr-auto ml-auto">
+          <h3 class="text-center">あなたの練習場所を紹介しよう！</h3>
+          <form action="/api/upload" class="contact-form" #postForm="ngForm" method="post" [formGroup]="form"
+            enctype="multipart/form-data" (ngSubmit)="post(postForm)">
+            <input type="hidden" ngModel formControlName="username" [(ngModel)]="username">
+            <input type="hidden" ngModel formControlName="userId" [(ngModel)]="userId">
+            <input type="hidden" ngModel formControlName="createDate" [(ngModel)]="createDate">
+            <div class="row">
+              <div class="col-md-8">
+                <label>場所の名前</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="nc-icon nc-user-run"></i></span>
+                  </div>
+                  <input required ngModel type="text" formControlName="heading" class="form-control"
+                    placeholder="場所の名前">
+                </div>
+              </div>
+
+              <!-- 都道府県 -->
+              <div class="form-group col-md-4">
+                <label for="inputState">都道府県</label>
+                <select required ngModel id="inputState" formControlName="prefecture" class="form-control">
+                  <option id="update-state" *ngFor="let state of prefectures.states" [value]="state.value">
+                    {{state.viewValue}}</option>
+                </select>
+              </div>
+            </div>
+            <div formArrayName="postFroms">
+              <div *ngFor="let post of postFroms.controls; let i = index">
+                <div [formGroupName]="i">
+                  <ng-container *ngIf="i == 0">
+                    <h5 class="intro1"><span style="color: red;">*</span>紹介1</h5>
+                  </ng-container>
+                  <ng-container *ngIf="i == 1">
+                    <h5 class="intro2">紹介2</h5>
+                  </ng-container>
+                  <ng-container *ngIf="i == 2">
+                    <h5 class="intro3">紹介3</h5>
+                  </ng-container>
+                  <label><span style="color: red;">*</span>画像アップロード</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                    </div>
+                    <div class="custom-file">
+                      <label class="custom-file-label" for="{{'inputGroupFileText0' + i}}"
+                        id="{{'inputGroupFileText0' + i}}">画像を選択してください</label>
+                      <input required class="custom-file-input" ngModel (change)="fileChange(i, $event)"
+                        formControlName="coverImage" type="file" id="{{'inputGroupFileText0' + i}}">
+                    </div>
+                  </div>
+                  <label><span style="color: red;">*</span>説明文</label>
+                  <textarea required ngModel class="form-control" formControlName="description" rows="4"
+                    placeholder="私のお気に入りの公園で、、、" id="{{'description' + i}}"></textarea>
+                  <hr class="featurette-divider">
+                  <ng-container *ngIf="postFroms.length < 3">
+                    <span (click)="addPostForm()"><i class="fas fa-plus-circle"></i></span>
+                  </ng-container>
+                  <ng-container *ngIf="i !== 0">
+                    <span (click)="removePostFormGroup(i)"><i class="fas fa-minus-circle"></i></span>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 mr-auto ml-auto">
+                <button class="btn btn-danger btn-lg btn-fill" type="submit">投稿！</button>
+              </div>
+            </div>
+          </form>
+          <div *ngIf="errors && errors.length>0" class="alert alert-danger" style="margin-top: 1rem;">
+            <p *ngFor="let error of errors">{{ error.detail}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

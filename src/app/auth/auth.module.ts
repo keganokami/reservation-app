@@ -8,7 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './shared/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/token.interceptor';
-import { ProductPostComponent } from '../product/pruoduct-post/pruoduct-post.component';
+import { ProductPostComponent } from '../product/product-post/product-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     FormsModule,
+    ReactiveFormsModule
    ],
    providers: [
      AuthService,
