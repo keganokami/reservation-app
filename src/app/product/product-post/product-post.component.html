@@ -39,8 +39,16 @@
             <div formArrayName="postFroms">
               <div *ngFor="let post of postFroms.controls; let i = index">
                 <div [formGroupName]="i">
-                  <h5 class="intro1">紹介1</h5>
-                  <label>画像アップロード</label>
+                  <ng-container *ngIf="i == 0">
+                    <h5 class="intro1"><span style="color: red;">*</span>紹介1</h5>
+                  </ng-container>
+                  <ng-container *ngIf="i == 1">
+                    <h5 class="intro2">紹介2</h5>
+                  </ng-container>
+                  <ng-container *ngIf="i == 2">
+                    <h5 class="intro3">紹介3</h5>
+                  </ng-container>
+                  <label><span style="color: red;">*</span>画像アップロード</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                     </div>
@@ -52,19 +60,18 @@
                     </div>
                   </div>
                 </div>
-                <label>説明文</label>
+                <label><span style="color: red;">*</span>説明文</label>
                 <textarea required ngModel class="form-control" formControlName="description" rows="4"
                 placeholder="私のお気に入りの公園で、、、" id="{{'description' + i}}"></textarea>
-                <ng-container *ngIf="i !== 0">
-                  <span (click)="removePostFormGroup(i)">削除</span>
+                <hr class="featurette-divider">
+                <ng-container *ngIf="postFroms.length < 3">
+                  <span (click)="addPostForm()"><i class="fas fa-plus-circle"></i></span>
                 </ng-container>
-                
+                <ng-container *ngIf="i !== 0">
+                  <span (click)="removePostFormGroup(i)"><i class="fas fa-minus-circle"></i></span>
+                </ng-container>
               </div>
             </div>
-            <ng-container *ngIf="postFroms.length < 3">
-              <span (click)="addPostForm()">追加</span>
-            </ng-container>
-            <hr class="featurette-divider">
             <div class="row">
               <div class="col-md-4 mr-auto ml-auto">
                 <button class="btn btn-danger btn-lg btn-fill" type="submit">投稿！</button>

@@ -32,9 +32,12 @@
                 "src/assets/sass/paper-kit.scss",
                 "src/assets/css/demo.css",
                 "src/assets/css/nucleo-icons.css",
-                "src/styles.scss"
+                "src/styles.scss",
+                "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,9 +103,12 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/sass/paper-kit.scss",
               "src/assets/css/demo.css",
-              "src/assets/css/nucleo-icons.css"
+              "src/assets/css/nucleo-icons.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+            ]
           }
         },
         "lint": {

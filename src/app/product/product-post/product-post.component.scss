@@ -117,3 +117,19 @@ label.custom-file-label {
   position: relative;
   z-index: 3;
 }
+
+.fa-plus-circle {
+  font-size: 1.5rem;
+  color: rgb(26, 26, 245);
+  margin-right: .3rem;
+}
+
+.fa-minus-circle {
+  font-size: 1.5rem;
+  color: rgb(252, 64, 64);
+
+}
+
+.fa-plus-circle, .fa-minus-circle:hover {
+  opacity: 0.8;
+}
