@@ -5,6 +5,15 @@
   margin-top: 1rem;
 }
 
+.my-non-display {
+  opacity: 0;
+}
+
+.my-fade-in {
+  opacity: 1;
+  transition: 1s;
+}
+
 .header {
   text-align: center;
 }
@@ -121,7 +130,7 @@ label.custom-file-label {
 .fa-plus-circle {
   font-size: 1.5rem;
   color: rgb(26, 26, 245);
-  margin-right: .3rem;
+  margin-right: .6rem;
 }
 
 .fa-minus-circle {

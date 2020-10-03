@@ -48,6 +48,15 @@ textarea {
   color: rgb(112, 112, 112);
 }
 
+.info {
+  display: flex;
+  justify-content: center;
+}
+
+.my-card {
+  width: 25rem;
+}
+
 .posting-spiner {
   background: #5a5a5a;
   opacity: 0.5;

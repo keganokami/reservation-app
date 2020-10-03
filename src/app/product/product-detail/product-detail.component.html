@@ -47,11 +47,16 @@
             </div>
             <br /><br />
             <div class="row">
-              <div class="col-md-4">
+              <!-- 注意　1と3に画像があって2にないことはない。（ロジック部分で制御済み） -->
+                <div 
+                  [ngClass]="{'col-md-4': product.coverImage2 != null && product.coverImage3 != null, 
+                  'col-md-6': product.coverImage2 != null && product.coverImage3 == null,
+                  'col-md-12': product.coverImage2 == null && product.coverImage3 == null}"
+                  >
                 <div class="info">
                   <div class="card my-card">
                     <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt="">
-                    <div class="card-body my-card">
+                    <div class="card-body">
                       <ng-container *ngIf="isSameUser ; else disabled1">
                         <textarea [(ngModel)]="product.description1" class="form-control"
                           name="description1">{{ product.description1 }}</textarea>
@@ -63,11 +68,16 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <ng-container *ngIf="product.coverImage2 != null">
+                <div 
+                [ngClass]="{
+                'col-md-4': product.coverImage3 != null, 
+                'col-md-6': product.coverImage3 == null
+              }">
                 <div class="info">
                   <div class="card my-card">
                     <img class="my-img-size card-img-top" src="{{ product.coverImage2 }}" alt="">
-                    <div class="card-body my-card">
+                    <div class="card-body">
                       <!-- description -->
                       <ng-container *ngIf="isSameUser ; else disabled2">
                         <textarea [(ngModel)]="product.description2" class="form-control"
@@ -80,23 +90,26 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="info">
-                  <div class="card my-card">
-                    <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt="">
-                    <div class="card-body my-card">
-                      <!-- description -->
-                      <ng-container *ngIf="isSameUser ; else disabled3">
-                        <textarea [(ngModel)]="product.description3" class="form-control"
-                          name="description3">{{ product.description3 }}</textarea>
-                      </ng-container>
-                      <ng-template #disabled3>
-                        <p class="card-text">{{ product.description3 }}</p>
-                      </ng-template>
+            </ng-container>
+              <ng-container *ngIf="product.coverImage3 != null">
+                <div class="col-md-4">
+                  <div class="info">
+                    <div class="card my-card">
+                      <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt="">
+                      <div class="card-body">
+                        <!-- description -->
+                        <ng-container *ngIf="isSameUser ; else disabled3">
+                          <textarea [(ngModel)]="product.description3" class="form-control"
+                            name="description3">{{ product.description3 }}</textarea>
+                        </ng-container>
+                        <ng-template #disabled3>
+                          <p class="card-text">{{ product.description3 }}</p>
+                        </ng-template>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ng-container>
             </div>
           </div>
         </div>

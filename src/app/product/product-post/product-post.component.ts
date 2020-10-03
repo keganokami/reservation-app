@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,7 +7,6 @@ import { SelectPrefectures } from 'src/app/util/prefectures';
 import { FormArray, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { disableDebugTools } from '@angular/platform-browser';
 
 interface Tokens {
   username: string;
@@ -43,6 +41,8 @@ export class ProductPostComponent implements OnInit {
     orientation: null,
     canvas: true
   };
+
+  isAdd: boolean = false;
 
   constructor(
     private productService: ProductService,
@@ -88,7 +88,7 @@ export class ProductPostComponent implements OnInit {
   // ファイルサイズをチェックして規定のサイズであればリサイズし、問題なければbase64化する
   CheckfileSizeAndgetInfo(file: File, index: number) {
     if (file.size >= 1000000) {
-      loadImage.parseMetaData(file, (data) => {
+      loadImage.parseMetaData(file, () => {
         this.getDataUrl(file, this.options)
           .then(result => {
             if (index == 0) {
@@ -141,7 +141,7 @@ export class ProductPostComponent implements OnInit {
     }
     this.isPosting = true;
     this.productService.post(postForm.value).subscribe(
-      (result) => {
+      () => {
         this.posting = false;
         this.isPosting = false;
         this.router.navigate(['/products']);
@@ -208,6 +208,7 @@ export class ProductPostComponent implements OnInit {
       const formIndex = this.postFroms.length - 1;
       document.getElementById('description' + formIndex).focus();
     }, 300); 
+    this.isAdd = true;
   }
   removePostFormGroup(index: number) {
     this.postFroms.removeAt(index)
