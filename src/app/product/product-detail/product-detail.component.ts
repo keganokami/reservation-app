@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
 import { SelectPrefectures } from 'src/app/util/prefectures';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 export interface Tokens {
   username: string;
@@ -41,6 +42,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
+    public auth: AuthService
   ) {
     if (this.tokenData == null) {
       return;

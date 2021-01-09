@@ -13,9 +13,9 @@
           <div class="container">
             <div class="row">
               <div class="mr-auto ml-auto">
-                 <h5>場所の名前</h5>
-                <h2 class="my-title" style="width: 15rem;">
-                  <ng-container *ngIf="isSameUser; else notEditableUser1">
+                <h5>場所の名前</h5>
+                <h2 class="my-title" style="width: 20rem;">
+                  <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else notEditableUser1">
                     <input [(ngModel)]="product.heading" type="text" name="heading" class="form-control">
                   </ng-container>
                   <ng-template #notEditableUser1>
@@ -27,7 +27,7 @@
             <div class="row">
               <div class="mr-auto ml-auto">
                 <p class="my-title-prefecture">
-                  <ng-container *ngIf="isSameUser; else notEditableUser9">
+                  <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else notEditableUser9">
                     <select (change)="getSelectedPref($event.target.value)" ([ngModel])="product.prefecture"
                       id="inputState" class="form-control">
                       <option id="update-state" *ngFor="let state of prefectures.states" [value]="state.value"
@@ -57,7 +57,7 @@
                   <div class="card my-card">
                     <img class="my-img-size card-img-top" src="{{product.coverImage1}}" alt="">
                     <div class="card-body">
-                      <ng-container *ngIf="isSameUser ; else disabled1">
+                      <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else disabled1">
                         <textarea [(ngModel)]="product.description1" class="form-control"
                           name="description1">{{ product.description1 }}</textarea>
                       </ng-container>
@@ -79,7 +79,7 @@
                     <img class="my-img-size card-img-top" src="{{ product.coverImage2 }}" alt="">
                     <div class="card-body">
                       <!-- description -->
-                      <ng-container *ngIf="isSameUser ; else disabled2">
+                      <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else disabled2">
                         <textarea [(ngModel)]="product.description2" class="form-control"
                           name="description2">{{ product.description2 }}</textarea>
                       </ng-container>
@@ -98,7 +98,7 @@
                       <img class="my-img-size card-img-top" src="{{ product.coverImage3 }}" alt="">
                       <div class="card-body">
                         <!-- description -->
-                        <ng-container *ngIf="isSameUser ; else disabled3">
+                        <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else disabled3">
                           <textarea [(ngModel)]="product.description3" class="form-control"
                             name="description3">{{ product.description3 }}</textarea>
                         </ng-container>
@@ -113,7 +113,7 @@
             </div>
           </div>
         </div>
-        <ng-container *ngIf="isSameUser">
+        <ng-container *ngIf="isSameUser && auth.isAuthenticated()">
           <div class="my-refrect-btn-area">
             <button class="btn btn-danger btn-round" type="submit">更新</button>
             <button class="btn btn-outline-default btn-round my-delete-btn" (click)="onButtonClickRemovePost(product)" >削除</button>
