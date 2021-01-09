@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
         <div class="card-register">
-          <h3 class="title">ログイン</h3>
-          <p>投稿や閲覧をするには<br />会員登録またはログインが必要です</p>
+          <h3 class="title">サインイン</h3>
+          <p>投稿や閲覧をするには<br />会員登録またはサインインが必要です</p>
           <form class="register-form" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <label>メールアドレス</label>
             <div class="input-group form-group-no-border">
@@ -27,8 +27,11 @@
               </div>
               <input ngModel type="password" name="password" class="form-control" placeholder="パスワード" required>
             </div>
-            <button [disabled]="!loginForm.valid" class="btn btn-danger btn-block btn-round" type="submit">ログイン</button>
+            <button [disabled]="!loginForm.valid" class="btn btn-danger btn-block btn-round" type="submit">サインイン</button>
           </form>
+          <div class="card-block-google-login">
+            <button class="google-login-btn" type="reset" (click)="signInWithGoogle()"><img src="./../../../assets/btn_google_signin_dark_focus_web.png" alt="button"/></button>
+          </div>
           <div *ngIf="errors && errors.length>0" class="alert alert-danger" style="margin-top: 1rem;">
             <p *ngFor="let error of errors">{{ error.detail}}</p>
           </div>

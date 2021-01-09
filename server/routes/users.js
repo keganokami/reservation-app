@@ -34,6 +34,17 @@ router.post('/login', (req, res) => {
   })
 })
 
+// フォーム入力のためpostで送信
+router.post('/googleLogin', (req, res) => {
+  const {id, name } = req.body
+    const token = jwt.sign({
+      userId: id,
+      username: name
+    }, config.SECRET, { expiresIn: '1h' });
+  
+    return res.json(token)
+})
+
 router.post('/:register', (req, res) => {
   const { username, email, password, confirmPassword } = req.body
 

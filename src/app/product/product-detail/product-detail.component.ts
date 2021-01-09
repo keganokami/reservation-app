@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Products, ProductService } from '../shared/product.service';
 import { SelectPrefectures } from 'src/app/util/prefectures';
 
-interface Tokens {
+export interface Tokens {
   username: string;
   userId: string;
 }
@@ -37,17 +37,17 @@ export class ProductDetailComponent implements OnInit, OnChanges {
 
   isPosting: boolean = false;
 
-  myUrl: string;
-
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
   ) {
+    if (this.tokenData == null) {
+      return;
+    }
     const dataObj: Tokens = JSON.parse(this.tokenData);
     this.userId = dataObj.userId;
-    this.myUrl = location.href;
-    console.log(this.myUrl);
+    
   }
 
   product: Products;
@@ -68,7 +68,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       const productObservablue = this.productService.getProductById(params.get('productId'));
       productObservablue.subscribe((data) => {
-        this.product = data;
+        this.product = data;      
         // ユーザー情報と投稿ユーザーの一致を検知
         this.isSameUser = (this.product.userId === this.userId);
       },

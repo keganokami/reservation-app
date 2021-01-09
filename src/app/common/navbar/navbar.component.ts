@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { SocialUser } from "angularx-social-login";
 import { AuthService } from 'src/app/auth/shared/auth.service';
 @Component({
   selector: 'app-navbar',
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/auth/shared/auth.service';
 export class NavbarComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
+  user: SocialUser;
 
   constructor(public location: Location, private element: ElementRef, public auth: AuthService) {
       this.sidebarVisible = false;

@@ -3,7 +3,7 @@ const config = require('../config')
 const User = require('../model/user')
 
 function notAutorized(res) {
-  return res.status(401).send({ error: [{ title: 'Not Authorized', detail: 'ログインが必要です' }] })
+  return res.status(401).send({ error: [{ title: 'Not Authorized', detail: 'サインインが必要です' }] })
 }
 
 

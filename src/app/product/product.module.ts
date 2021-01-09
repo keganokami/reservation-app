@@ -13,10 +13,11 @@ const routes: Routes = [
   {
     path: 'products', component: ProductComponent,
     children: [
-      {path: '', component: ProductListComponent},
-    ]
+      { path: '', component: ProductListComponent},
+      
+    ],
   },
-  {path: 'products/:productId', component: ProductDetailComponent, canActivate: [AuthGuard]}, // authGuardのインポートがされる
+  {path: 'products/:productId', component: ProductDetailComponent}, // authGuardのインポートがされる
 ];
 
 @NgModule({
