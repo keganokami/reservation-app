@@ -14,14 +14,14 @@
             <div class="row">
               <div class="mr-auto ml-auto">
                 <h5>場所の名前</h5>
-                <h2 class="my-title" style="width: 20rem;">
+                <h3 class="my-title" style="width: 20rem;">
                   <ng-container *ngIf="isSameUser && auth.isAuthenticated(); else notEditableUser1">
                     <input [(ngModel)]="product.heading" type="text" name="heading" class="form-control">
                   </ng-container>
                   <ng-template #notEditableUser1>
                     {{ product.heading }}
                   </ng-template>
-                </h2>
+                </h3>
               </div>
             </div>
             <div class="row">
