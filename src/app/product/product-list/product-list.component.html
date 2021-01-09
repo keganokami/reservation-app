@@ -2,7 +2,7 @@
   <ng-container *ngIf="products">
     <div class="container">
       <div class="row">
-        <button [ngClass]="isFilterdUSerId ? 'btn-info' : 'btn-success'" class="ml-auto btn btn-round show-my-posts-btn"
+        <button *ngIf="auth.isAuthenticated()" [ngClass]="isFilterdUSerId ? 'btn-info' : 'btn-success'" class="ml-auto btn btn-round show-my-posts-btn"
           (click)="onClickToggleAllPoststoMyPosts()">{{ buttonText }}</button>
       </div>
       <div class="row">

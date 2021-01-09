@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/shared/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ProductService, Products } from '../shared/product.service';
 import { Router } from '@angular/router';
@@ -32,7 +33,7 @@ export class ProductListComponent implements OnInit, OnChanges {
   tokenData: string = localStorage.getItem('app-meta');
   userId: string;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService, private router: Router, public auth: AuthService) {
     const dataObj: Tokens = JSON.parse(this.tokenData);
     if (dataObj !== null) {
       this.userId = dataObj.userId;
